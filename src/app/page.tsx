@@ -1,18 +1,30 @@
 "use client";
 
 import { useAccount, useConnect, useDisconnect } from "wagmi";
-import { useEffect } from "react";
-import { switchChain } from "@wagmi/core";
+import { useEffect, useState } from "react";
+import { switchChain, readContract } from "@wagmi/core";
 import { base } from "@wagmi/core/chains";
 import { Deposit } from "../components/Deposit";
 import { config } from "@/wagmi";
+import { contractABI, contractAddress } from "../config";
 
 function App() {
   const { status, address, chain, connector } = useAccount();
   const { connectors, connect, error } = useConnect();
   const { disconnect } = useDisconnect();
 
-  // Switch to Base network if not already connected
+  const [goalInfo, setGoalInfo] = useState({
+    name: "",
+    goal: "",
+    pooled: 0,
+    target: 0,
+    deadline: 0,
+    flexers: 0,
+    pooledWithInterest: 0,
+  });
+
+  const [effectiveBalance, setEffectiveBalance] = useState(0);
+
   useEffect(() => {
     async function switchToBase() {
       if (status === "connected" && chain?.id !== base.id) {
@@ -28,6 +40,70 @@ function App() {
     }
     switchToBase();
   }, [status, chain, connector]);
+
+  useEffect(() => {
+    const fetchGoalInfo = async () => {
+      try {
+        const data = await readContract(config, {
+          abi: contractABI,
+          address: contractAddress,
+          functionName: "getGoalInfo",
+        });
+
+        const [
+          name,
+          goal,
+          pooled,
+          target,
+          deadline,
+          flexers,
+          pooledWithInterest,
+        ] = data as [string, string, number, number, number, number, number];
+
+        setGoalInfo({
+          name,
+          goal,
+          pooled: Number(pooled),
+          target: Number(target),
+          deadline: Number(deadline),
+          flexers: Number(flexers),
+          pooledWithInterest: Number(pooledWithInterest),
+        });
+      } catch (error) {
+        console.error("Error fetching goal info:", error);
+      }
+    };
+
+    const fetchEffectiveBalance = async () => {
+      if (address) {
+        try {
+          const balance = await readContract(config, {
+            abi: contractABI,
+            address: contractAddress,
+            functionName: "getEffectiveBalance",
+            args: [address],
+          });
+          setEffectiveBalance(Number(balance));
+        } catch (error) {
+          console.error("Error fetching effective balance:", error);
+        }
+      }
+    };
+
+    fetchGoalInfo();
+    if (status === "connected") {
+      fetchEffectiveBalance();
+    }
+  }, [status, address]);
+
+  const formatUSDC = (value: number) => {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(value / 1e6); // Convert from 6 decimal places
+  };
 
   return (
     <>
@@ -62,10 +138,29 @@ function App() {
       </div>
 
       {status === "connected" && (
-        <div>
-          <h2>Deposit</h2>
-          <Deposit />
-        </div>
+        <>
+          <div>
+            <h2>Goal Info</h2>
+            <p>Name: {goalInfo.name}</p>
+            <p>Description: {goalInfo.goal}</p>
+            <p>Target: {formatUSDC(goalInfo.target)} USDC</p>
+            <p>Total Pooled: {formatUSDC(goalInfo.pooled)} USDC</p>
+            <p>
+              Total Pooled with Interest:{" "}
+              {formatUSDC(goalInfo.pooledWithInterest)} USDC
+            </p>
+            <p>Flexers: {goalInfo.flexers}</p>
+            <p>
+              Deadline: {new Date(goalInfo.deadline * 1000).toLocaleString()}
+            </p>
+            <p>Your Flexclub Balance: {formatUSDC(effectiveBalance)} USDC</p>
+          </div>
+
+          <div>
+            <h2>Deposit</h2>
+            <Deposit />
+          </div>
+        </>
       )}
     </>
   );
