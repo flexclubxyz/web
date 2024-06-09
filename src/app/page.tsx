@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { switchChain, readContract } from "@wagmi/core";
 import { base } from "@wagmi/core/chains";
 import { Deposit } from "../components/Deposit";
-import { Withdraw } from "../components/Withdraw"; // Import Withdraw component
+import { Withdraw } from "../components/Withdraw";
 import { config } from "@/wagmi";
 import { contractABI, contractAddress } from "../config";
 
@@ -25,6 +25,7 @@ function App() {
   });
 
   const [effectiveBalance, setEffectiveBalance] = useState(0);
+  const [successMessage, setSuccessMessage] = useState("");
 
   useEffect(() => {
     async function switchToBase() {
@@ -106,6 +107,11 @@ function App() {
     }).format(value / 1e6); // Convert from 6 decimal places
   };
 
+  const handleDepositSuccess = () => {
+    setSuccessMessage("Deposit successful! 🎉");
+    setTimeout(() => setSuccessMessage(""), 5000); // Clear the message after 5 seconds
+  };
+
   return (
     <div className="container">
       <div>
@@ -171,11 +177,17 @@ function App() {
         </p>
       </div>
 
+      {successMessage && (
+        <div className="success-message">
+          <p>{successMessage}</p>
+        </div>
+      )}
+
       {status === "connected" && (
         <>
           <div>
             <h2>Deposit</h2>
-            <Deposit />
+            <Deposit onDepositSuccess={handleDepositSuccess} />
           </div>
 
           <div>
