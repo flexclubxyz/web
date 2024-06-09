@@ -116,3 +116,25 @@ a:hover {
 .input-container button:hover {
   background-color: #155ab6;
 }
+
+.wallet-connect-container {
+  margin-top: 10px;
+}
+
+.wallet-connect-container button {
+  margin-right: 10px;
+  margin-top: 0;
+}
+
+.wallet-connect-container button:last-child {
+  margin-right: 0;
+}
+
+.connect-header {
+  margin-bottom: 5px; /* Adjust the margin as needed */
+}
+
+/* Add margin above the FLEXCLUB section */
+.flexclub-section {
+  margin-top: 20px;
+}
