@@ -67,7 +67,7 @@ export function Deposit() {
   });
 
   return (
-    <div>
+    <div className="input-container">
       <input
         type="text"
         value={amount}
