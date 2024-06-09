@@ -98,6 +98,10 @@ function App() {
     }
   }, [status, address]);
 
+  const handleDepositSuccess = () => {
+    setSuccessMessage("Deposit successful!");
+  };
+
   const formatUSDC = (value: number) => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
@@ -105,11 +109,6 @@ function App() {
       minimumFractionDigits: 2,
       maximumFractionDigits: 4,
     }).format(value / 1e6); // Convert from 6 decimal places
-  };
-
-  const handleDepositSuccess = () => {
-    setSuccessMessage("Deposit successful! 🎉");
-    setTimeout(() => setSuccessMessage(""), 5000); // Clear the message after 5 seconds
   };
 
   return (
@@ -178,9 +177,7 @@ function App() {
       </div>
 
       {successMessage && (
-        <div className="success-message">
-          <p>{successMessage}</p>
-        </div>
+        <div className="success-message">{successMessage}</div>
       )}
 
       {status === "connected" && (
