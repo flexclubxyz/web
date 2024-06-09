@@ -142,9 +142,9 @@ function App() {
         <>
           <div>
             <h2>FLEXCLUB #001</h2>
-            <p>
+            <div>
               <h3>{goalInfo.name}</h3>
-            </p>
+            </div>
             <p>{goalInfo.goal} 🇹🇭</p>
             {/* <p>- Total Pooled: {formatUSDC(goalInfo.pooled)} USDC</p> */}
             <p>
