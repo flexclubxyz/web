@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { switchChain, readContract } from "@wagmi/core";
 import { base } from "@wagmi/core/chains";
 import { Deposit } from "../components/Deposit";
+import { Withdraw } from "../components/Withdraw"; // Import Withdraw component
 import { config } from "@/wagmi";
 import { contractABI, contractAddress } from "../config";
 
@@ -140,19 +141,24 @@ function App() {
       {status === "connected" && (
         <>
           <div>
-            <h2>Goal Info</h2>
-            <p>{goalInfo.name}</p>
-            <p>{goalInfo.goal}</p>
-            <p>- Total Pooled: {formatUSDC(goalInfo.pooled)} USDC</p>
+            <h2>FLEXCLUB #001</h2>
             <p>
-              - Total Pooled with Interest:{" "}
-              {formatUSDC(goalInfo.pooledWithInterest)} USDC
+              <h3>{goalInfo.name}</h3>
             </p>
-            <p> - Your Flexclub Balance: {formatUSDC(effectiveBalance)} USDC</p>
-            <p>- Flexers: {goalInfo.flexers}</p>
-            <p>- Target: {formatUSDC(goalInfo.target)} USDC</p>
+            <p>{goalInfo.goal} 🇹🇭</p>
+            {/* <p>- Total Pooled: {formatUSDC(goalInfo.pooled)} USDC</p> */}
             <p>
-              - Deadline: {new Date(goalInfo.deadline * 1000).toLocaleString()}
+              - Total Pooled: {formatUSDC(goalInfo.pooledWithInterest)} USDC 🤑
+            </p>
+            <p>
+              {" "}
+              - Your Flexclub Balance: {formatUSDC(effectiveBalance)} USDC 💰
+            </p>
+            <p>- Members in the club: {goalInfo.flexers} 🌀</p>
+            <p>- Target: {formatUSDC(goalInfo.target)} USDC 🎯</p>
+            <p>
+              - Deadline: {new Date(goalInfo.deadline * 1000).toLocaleString()}{" "}
+              ⏰
             </p>
             <p>
               <a
@@ -160,7 +166,7 @@ function App() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                View Contract on BaseScan
+                🔗 flexclub smart contract on Base
               </a>
             </p>
           </div>
@@ -168,6 +174,11 @@ function App() {
           <div>
             <h2>Deposit</h2>
             <Deposit />
+          </div>
+
+          <div>
+            <h2>Withdraw</h2>
+            <Withdraw />
           </div>
         </>
       )}
