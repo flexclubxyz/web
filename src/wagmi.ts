@@ -5,7 +5,7 @@ import { coinbaseWallet, injected, walletConnect } from "wagmi/connectors";
 export const config = createConfig({
   chains: [mainnet, sepolia, base],
   connectors: [
-    injected(),
+    // injected(),
     coinbaseWallet({ appName: "Create Wagmi" }),
     // walletConnect({ projectId, String: process.env.NEXT_PUBLIC_WC_PROJECT_ID }),
   ],
