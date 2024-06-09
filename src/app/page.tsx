@@ -126,21 +126,23 @@ function App() {
 
       {status !== "connected" && (
         <div>
-          <h2>Connect</h2>
-          {connectors.map((connector) => (
-            <button
-              key={connector.id}
-              onClick={() => connect({ connector })}
-              type="button"
-            >
-              {connector.name}
-            </button>
-          ))}
+          <h2 className="connect-header">Connect</h2>
+          <div className="wallet-connect-container">
+            {connectors.map((connector) => (
+              <button
+                key={connector.id}
+                onClick={() => connect({ connector })}
+                type="button"
+              >
+                {connector.name}
+              </button>
+            ))}
+          </div>
           <div>{error?.message}</div>
         </div>
       )}
 
-      <div>
+      <div className="flexclub-section">
         <h2>FLEXCLUB #001</h2>
         <div>
           <h3>{goalInfo.name}</h3>
@@ -164,7 +166,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            🔗 flexclub smart contract on Base
+            🔗 Flexclub smart contract on Base
           </a>
         </p>
       </div>
