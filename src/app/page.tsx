@@ -101,12 +101,12 @@ function App() {
       style: "currency",
       currency: "USD",
       minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
+      maximumFractionDigits: 4,
     }).format(value / 1e6); // Convert from 6 decimal places
   };
 
   return (
-    <>
+    <div className="container">
       <div>
         <h2>Account</h2>
 
@@ -141,19 +141,28 @@ function App() {
         <>
           <div>
             <h2>Goal Info</h2>
-            <p>Name: {goalInfo.name}</p>
-            <p>Description: {goalInfo.goal}</p>
-            <p>Target: {formatUSDC(goalInfo.target)} USDC</p>
-            <p>Total Pooled: {formatUSDC(goalInfo.pooled)} USDC</p>
+            <p>{goalInfo.name}</p>
+            <p>{goalInfo.goal}</p>
+            <p>- Total Pooled: {formatUSDC(goalInfo.pooled)} USDC</p>
             <p>
-              Total Pooled with Interest:{" "}
+              - Total Pooled with Interest:{" "}
               {formatUSDC(goalInfo.pooledWithInterest)} USDC
             </p>
-            <p>Flexers: {goalInfo.flexers}</p>
+            <p> - Your Flexclub Balance: {formatUSDC(effectiveBalance)} USDC</p>
+            <p>- Flexers: {goalInfo.flexers}</p>
+            <p>- Target: {formatUSDC(goalInfo.target)} USDC</p>
             <p>
-              Deadline: {new Date(goalInfo.deadline * 1000).toLocaleString()}
+              - Deadline: {new Date(goalInfo.deadline * 1000).toLocaleString()}
             </p>
-            <p>Your Flexclub Balance: {formatUSDC(effectiveBalance)} USDC</p>
+            <p>
+              <a
+                href="https://basescan.org/address/0x63be961f1a2985a4596a39db6dccfebee0feae88"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Contract on BaseScan
+              </a>
+            </p>
           </div>
 
           <div>
@@ -162,7 +171,7 @@ function App() {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 }
 
