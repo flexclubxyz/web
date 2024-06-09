@@ -140,41 +140,37 @@ function App() {
         </div>
       )}
 
+      <div>
+        <h2>FLEXCLUB #001</h2>
+        <div>
+          <h3>{goalInfo.name}</h3>
+        </div>
+        <p>{goalInfo.goal} 🇹🇭</p>
+        <p>- Target: {formatUSDC(goalInfo.target)} USDC 🎯</p>
+        <p>
+          - Pooled by club members: {formatUSDC(goalInfo.pooledWithInterest)}{" "}
+          USDC 🤑
+        </p>
+        <p>- Members in the club: {goalInfo.flexers} 🌀</p>
+        {status === "connected" && (
+          <p>- Your Flexclub balance: {formatUSDC(effectiveBalance)} USDC 💰</p>
+        )}
+        <p>
+          - Deadline: {new Date(goalInfo.deadline * 1000).toLocaleString()} ⏰
+        </p>
+        <p>
+          <a
+            href="https://basescan.org/address/0x63be961f1a2985a4596a39db6dccfebee0feae88"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🔗 flexclub smart contract on Base
+          </a>
+        </p>
+      </div>
+
       {status === "connected" && (
         <>
-          <div>
-            <h2>FLEXCLUB #001</h2>
-            <div>
-              <h3>{goalInfo.name}</h3>
-            </div>
-            <p>{goalInfo.goal} 🇹🇭</p>
-            <p>- Target: {formatUSDC(goalInfo.target)} USDC 🎯</p>
-            {/* <p>- Total Pooled: {formatUSDC(goalInfo.pooled)} USDC</p> */}
-            <p>
-              - Pooled by club members:{" "}
-              {formatUSDC(goalInfo.pooledWithInterest)} USDC 🤑
-            </p>
-            <p>- Members in the club: {goalInfo.flexers} 🌀</p>
-            <p>
-              {" "}
-              - Your Flexclub balance: {formatUSDC(effectiveBalance)} USDC 💰
-            </p>
-
-            <p>
-              - Deadline: {new Date(goalInfo.deadline * 1000).toLocaleString()}{" "}
-              ⏰
-            </p>
-            <p>
-              <a
-                href="https://basescan.org/address/0x63be961f1a2985a4596a39db6dccfebee0feae88"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                🔗 flexclub smart contract on Base
-              </a>
-            </p>
-          </div>
-
           <div>
             <h2>Deposit</h2>
             <Deposit />
