@@ -6,7 +6,11 @@ import { writeContract, readContract } from "@wagmi/core";
 import { config } from "@/wagmi";
 import { contractABI, contractAddress, usdcABI, usdcAddress } from "../config";
 
-export function Deposit() {
+interface DepositProps {
+  onDepositSuccess: () => void;
+}
+
+export function Deposit({ onDepositSuccess }: DepositProps) {
   const [amount, setAmount] = useState("");
   const { address } = useAccount();
 
@@ -60,6 +64,7 @@ export function Deposit() {
           account: address,
         });
         console.log("Deposit successful");
+        onDepositSuccess();
       } catch (error) {
         console.error("Error during contract interaction:", error);
       }

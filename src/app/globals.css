@@ -117,24 +117,11 @@ a:hover {
   background-color: #155ab6;
 }
 
-.wallet-connect-container {
-  margin-top: 10px;
-}
-
-.wallet-connect-container button {
-  margin-right: 10px;
-  margin-top: 0;
-}
-
-.wallet-connect-container button:last-child {
-  margin-right: 0;
-}
-
-.connect-header {
-  margin-bottom: 5px; /* Adjust the margin as needed */
-}
-
-/* Add margin above the FLEXCLUB section */
-.flexclub-section {
+.success-message {
   margin-top: 20px;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
 }
