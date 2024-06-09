@@ -1,11 +1,33 @@
-'use client'
+"use client";
 
-import { useAccount, useConnect, useDisconnect } from 'wagmi'
+import { useAccount, useConnect, useDisconnect } from "wagmi";
+import { useEffect } from "react";
+import { switchChain } from "@wagmi/core";
+import { base } from "@wagmi/core/chains";
+import { Deposit } from "../components/Deposit";
+import { config } from "@/wagmi";
 
 function App() {
-  const account = useAccount()
-  const { connectors, connect, status, error } = useConnect()
-  const { disconnect } = useDisconnect()
+  const { status, address, chain, connector } = useAccount();
+  const { connectors, connect, error } = useConnect();
+  const { disconnect } = useDisconnect();
+
+  // Switch to Base network if not already connected
+  useEffect(() => {
+    async function switchToBase() {
+      if (status === "connected" && chain?.id !== base.id) {
+        try {
+          await switchChain(config, {
+            chainId: base.id,
+            connector,
+          });
+        } catch (error) {
+          console.error("Failed to switch chain", error);
+        }
+      }
+    }
+    switchToBase();
+  }, [status, chain, connector]);
 
   return (
     <>
@@ -13,14 +35,12 @@ function App() {
         <h2>Account</h2>
 
         <div>
-          status: {account.status}
+          status: {status}
           <br />
-          addresses: {JSON.stringify(account.addresses)}
-          <br />
-          chainId: {account.chainId}
+          address: {address}
         </div>
 
-        {account.status === 'connected' && (
+        {status === "connected" && (
           <button type="button" onClick={() => disconnect()}>
             Disconnect
           </button>
@@ -31,18 +51,24 @@ function App() {
         <h2>Connect</h2>
         {connectors.map((connector) => (
           <button
-            key={connector.uid}
+            key={connector.id}
             onClick={() => connect({ connector })}
             type="button"
           >
             {connector.name}
           </button>
         ))}
-        <div>{status}</div>
         <div>{error?.message}</div>
       </div>
+
+      {status === "connected" && (
+        <div>
+          <h2>Deposit</h2>
+          <Deposit />
+        </div>
+      )}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
