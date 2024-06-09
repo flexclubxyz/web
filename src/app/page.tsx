@@ -124,19 +124,21 @@ function App() {
         )}
       </div>
 
-      <div>
-        <h2>Connect</h2>
-        {connectors.map((connector) => (
-          <button
-            key={connector.id}
-            onClick={() => connect({ connector })}
-            type="button"
-          >
-            {connector.name}
-          </button>
-        ))}
-        <div>{error?.message}</div>
-      </div>
+      {status !== "connected" && (
+        <div>
+          <h2>Connect</h2>
+          {connectors.map((connector) => (
+            <button
+              key={connector.id}
+              onClick={() => connect({ connector })}
+              type="button"
+            >
+              {connector.name}
+            </button>
+          ))}
+          <div>{error?.message}</div>
+        </div>
+      )}
 
       {status === "connected" && (
         <>
@@ -146,16 +148,18 @@ function App() {
               <h3>{goalInfo.name}</h3>
             </div>
             <p>{goalInfo.goal} 🇹🇭</p>
+            <p>- Target: {formatUSDC(goalInfo.target)} USDC 🎯</p>
             {/* <p>- Total Pooled: {formatUSDC(goalInfo.pooled)} USDC</p> */}
             <p>
-              - Total Pooled: {formatUSDC(goalInfo.pooledWithInterest)} USDC 🤑
-            </p>
-            <p>
-              {" "}
-              - Your Flexclub Balance: {formatUSDC(effectiveBalance)} USDC 💰
+              - Pooled by club members:{" "}
+              {formatUSDC(goalInfo.pooledWithInterest)} USDC 🤑
             </p>
             <p>- Members in the club: {goalInfo.flexers} 🌀</p>
-            <p>- Target: {formatUSDC(goalInfo.target)} USDC 🎯</p>
+            <p>
+              {" "}
+              - Your Flexclub balance: {formatUSDC(effectiveBalance)} USDC 💰
+            </p>
+
             <p>
               - Deadline: {new Date(goalInfo.deadline * 1000).toLocaleString()}{" "}
               ⏰
