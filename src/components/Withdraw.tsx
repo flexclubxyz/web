@@ -4,7 +4,7 @@ import { useAccount } from "wagmi";
 import { parseUnits } from "ethers";
 import { writeContract, readContract } from "@wagmi/core";
 import { config } from "@/wagmi";
-import { contractABI, contractAddress } from "../config";
+import { contractABI, contractAddress, usdcABI, usdcAddress } from "../config";
 
 export function Withdraw() {
   const [amount, setAmount] = useState("");
@@ -21,8 +21,8 @@ export function Withdraw() {
       const amountInUnits = parseUnits(amount, 6); // Convert amount to USDC (6 decimals)
       console.log("Amount in units:", amountInUnits.toString());
 
-      // Proceed with the withdrawal
       try {
+        // Proceed with the withdrawal
         console.log("Proceeding with withdrawal");
         await writeContract(config, {
           abi: contractABI,
@@ -39,7 +39,7 @@ export function Withdraw() {
   });
 
   return (
-    <div>
+    <div className="input-container">
       <input
         type="text"
         value={amount}
