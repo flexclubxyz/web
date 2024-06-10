@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useAccount } from "wagmi";
 import { parseUnits } from "ethers";
-import { writeContract, readContract } from "@wagmi/core";
+import { writeContract } from "@wagmi/core";
 import { config } from "@/wagmi";
-import { contractABI, contractAddress, usdcABI, usdcAddress } from "../config";
+import { contractABI, contractAddress } from "../config";
 
-export function Withdraw() {
+export function Withdraw({
+  onWithdrawSuccess,
+}: {
+  onWithdrawSuccess: () => void;
+}) {
   const [amount, setAmount] = useState("");
   const { address } = useAccount();
 
@@ -21,9 +25,8 @@ export function Withdraw() {
       const amountInUnits = parseUnits(amount, 6); // Convert amount to USDC (6 decimals)
       console.log("Amount in units:", amountInUnits.toString());
 
+      // Proceed with the withdrawal
       try {
-        // Proceed with the withdrawal
-        console.log("Proceeding with withdrawal");
         await writeContract(config, {
           abi: contractABI,
           address: contractAddress,
@@ -32,6 +35,7 @@ export function Withdraw() {
           account: address,
         });
         console.log("Withdrawal successful");
+        onWithdrawSuccess(); // Call the success callback
       } catch (error) {
         console.error("Error during contract interaction:", error);
       }
