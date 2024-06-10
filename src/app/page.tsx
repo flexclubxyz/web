@@ -131,7 +131,7 @@ function App() {
 
       {status !== "connected" && (
         <div>
-          <h2 className="connect-header">Connect</h2>
+          <h2 className="connect-header">Connect Wallet to join Flexclub</h2>
           <div className="wallet-connect-container">
             {connectors.map((connector) => (
               <button
