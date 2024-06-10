@@ -146,7 +146,7 @@ function App() {
 
       {status !== "connected" && (
         <div>
-          <h2 className="connect-header">Connect to join Flexclub</h2>
+          <h3 className="connect-header">Connect wallet to join Flexclub</h3>
           <div className="wallet-connect-container">
             {connectors.map((connector) => (
               <button
@@ -175,11 +175,11 @@ function App() {
         </p>
         <p>- Members in the club: {goalInfo.flexers} 🌀</p>
         {status === "connected" && (
-          <p>- Your Flexclub balance: {formatUSDC(effectiveBalance)} USDC 💰</p>
+          <h4>Your Flexclub balance: {formatUSDC(effectiveBalance)} USDC 💰</h4>
         )}
-        <p>
+        {/* <p>
           - Deadline: {new Date(goalInfo.deadline * 1000).toLocaleString()} ⏰
-        </p>
+        </p> */}
         <p>
           <a
             href="https://basescan.org/address/0x63be961f1a2985a4596a39db6dccfebee0feae88"
