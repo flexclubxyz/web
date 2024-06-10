@@ -98,8 +98,22 @@ function App() {
     }
   }, [status, address]);
 
+  useEffect(() => {
+    if (successMessage) {
+      const timer = setTimeout(() => {
+        setSuccessMessage("");
+      }, 3000); // Clear the message after 3 seconds
+
+      return () => clearTimeout(timer); // Clear the timer if the component unmounts or successMessage changes
+    }
+  }, [successMessage]);
+
   const handleDepositSuccess = () => {
-    setSuccessMessage("Deposit successful!");
+    setSuccessMessage("Deposit successful! 🎉");
+  };
+
+  const handleWithdrawSuccess = () => {
+    setSuccessMessage("Withdrawal successful! 🎉");
   };
 
   const formatUSDC = (value: number) => {
@@ -131,7 +145,7 @@ function App() {
 
       {status !== "connected" && (
         <div>
-          <h2 className="connect-header">Connect Wallet to join Flexclub</h2>
+          <h2 className="connect-header">Connect</h2>
           <div className="wallet-connect-container">
             {connectors.map((connector) => (
               <button
@@ -189,7 +203,7 @@ function App() {
 
           <div>
             <h2>Withdraw</h2>
-            <Withdraw />
+            <Withdraw onWithdrawSuccess={handleWithdrawSuccess} />
           </div>
         </>
       )}
