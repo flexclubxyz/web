@@ -128,13 +128,14 @@ function App() {
   return (
     <div className="container">
       <div>
-        <h2>Account</h2>
+        <h2>Welcome to Flexclub</h2>
+        <p>Onchain goal based saving clubs. The fun way to save onchain!</p>
 
-        <div>
+        {/* <div>
           status: {status}
           <br />
           address: {address}
-        </div>
+        </div> */}
 
         {status === "connected" && (
           <button type="button" onClick={() => disconnect()}>
@@ -145,7 +146,7 @@ function App() {
 
       {status !== "connected" && (
         <div>
-          <h2 className="connect-header">Connect</h2>
+          <h2 className="connect-header">Connect to join Flexclub</h2>
           <div className="wallet-connect-container">
             {connectors.map((connector) => (
               <button
