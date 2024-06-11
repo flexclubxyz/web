@@ -144,9 +144,9 @@ function App() {
       <div className="flexclub-section">
         <h2>FLEXCLUB 001</h2>
         <div>
-          <h3>DevCon Bangkok Trip</h3>
+          <h3>Devcon Bangkok Trip</h3>
         </div>
-        <p>Saving to attend DevCon 2024 in Bangkok 🇹🇭</p>
+        <p>Saving to attend Devcon 2024 in Bangkok 🇹🇭</p>
         <p>- Target: {formatUSDC(goalInfo.target)} USDC 🎯</p>
         <p>
           - Pooled by members: {formatUSDC(goalInfo.pooledWithInterest)} USDC 🤑
@@ -190,7 +190,9 @@ function App() {
       <div>
         {status !== "connected" && (
           <div>
-            <h3 className="connect-header">Connect wallet to join Flexclub</h3>
+            <h3 className="connect-header">
+              Connect wallet to join Flexclub ⬇️ ⬇️ ⬇️
+            </h3>
             <div className="wallet-connect-container">
               {connectors.map((connector) => (
                 <button
