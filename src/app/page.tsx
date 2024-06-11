@@ -168,9 +168,9 @@ function App() {
       <div className="flexclub-section">
         <h2>FLEXCLUB #001</h2>
         <div>
-          <h3>{goalInfo.name}</h3>
+          <h3>DevCon Bangkok Trip</h3>
         </div>
-        <p>{goalInfo.goal} 🇹🇭</p>
+        <p>Saving to attend DevCon 2024 in Bangkok 🇹🇭</p>
         <p>- Target: {formatUSDC(goalInfo.target)} USDC 🎯</p>
         <p>
           - Pooled by club members: {formatUSDC(goalInfo.pooledWithInterest)}{" "}
@@ -201,12 +201,12 @@ function App() {
       {status === "connected" && (
         <>
           <div>
-            <h2>Deposit</h2>
+            <h3>DEPOSIT (Only make USDC deposits on Base)</h3>
             <Deposit onDepositSuccess={handleDepositSuccess} />
           </div>
 
           <div>
-            <h2>Withdraw</h2>
+            <h3>WITHDRAW (Only withdraw to Base USDC wallets)</h3>
             <Withdraw onWithdrawSuccess={handleWithdrawSuccess} />
           </div>
         </>
