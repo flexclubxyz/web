@@ -166,15 +166,14 @@ function App() {
       )}
 
       <div className="flexclub-section">
-        <h2>FLEXCLUB #001</h2>
+        <h2>FLEXCLUB 001</h2>
         <div>
           <h3>DevCon Bangkok Trip</h3>
         </div>
         <p>Saving to attend DevCon 2024 in Bangkok 🇹🇭</p>
         <p>- Target: {formatUSDC(goalInfo.target)} USDC 🎯</p>
         <p>
-          - Pooled by club members: {formatUSDC(goalInfo.pooledWithInterest)}{" "}
-          USDC 🤑
+          - Pooled by members: {formatUSDC(goalInfo.pooledWithInterest)} USDC 🤑
         </p>
         <p>- Members in the club: {goalInfo.flexers} 🌀</p>
         {status === "connected" && (
@@ -206,7 +205,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              🔗 Flexclub smart contract on Base
+              Flexclub smart contract on Base
             </a>
           </p>
         </>
