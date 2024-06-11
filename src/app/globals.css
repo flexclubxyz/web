@@ -140,9 +140,41 @@ a:hover {
 }
 
 .success-message {
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #4caf50;
-  color: white;
-  border-radius: 5px;
+  color: #4caf50;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+/* Mobile specific styles */
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+
+  h2,
+  h3,
+  h4,
+  p {
+    text-align: center;
+  }
+
+  .input-container {
+    flex-direction: column;
+  }
+
+  .input-container input {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .wallet-connect-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .wallet-connect-container button {
+    margin-bottom: 10px;
+    width: 100%;
+  }
 }
