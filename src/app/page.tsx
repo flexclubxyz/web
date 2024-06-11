@@ -183,15 +183,6 @@ function App() {
         {/* <p>
           - Deadline: {new Date(goalInfo.deadline * 1000).toLocaleString()} ⏰
         </p> */}
-        <p>
-          <a
-            href="https://basescan.org/address/0x63be961f1a2985a4596a39db6dccfebee0feae88"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            🔗 Flexclub smart contract on Base
-          </a>
-        </p>
       </div>
 
       {successMessage && (
@@ -209,6 +200,15 @@ function App() {
             <h3>WITHDRAW (Only withdraw to Base USDC wallets)</h3>
             <Withdraw onWithdrawSuccess={handleWithdrawSuccess} />
           </div>
+          <p>
+            <a
+              href="https://basescan.org/address/0x63be961f1a2985a4596a39db6dccfebee0feae88"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🔗 Flexclub smart contract on Base
+            </a>
+          </p>
         </>
       )}
     </div>
