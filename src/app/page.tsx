@@ -139,31 +139,7 @@ function App() {
           <br />
           address: {address}
         </div> */}
-
-        {status === "connected" && (
-          <button type="button" onClick={() => disconnect()}>
-            Logout
-          </button>
-        )}
       </div>
-
-      {status !== "connected" && (
-        <div>
-          <h3 className="connect-header">Connect wallet to join Flexclub</h3>
-          <div className="wallet-connect-container">
-            {connectors.map((connector) => (
-              <button
-                key={connector.id}
-                onClick={() => connect({ connector })}
-                type="button"
-              >
-                {connector.name}
-              </button>
-            ))}
-          </div>
-          <div>{error?.message}</div>
-        </div>
-      )}
 
       <div className="flexclub-section">
         <h2>FLEXCLUB 001</h2>
@@ -199,6 +175,7 @@ function App() {
             <h3>WITHDRAW (Only withdraw to Base USDC wallets)</h3>
             <Withdraw onWithdrawSuccess={handleWithdrawSuccess} />
           </div>
+
           <p>
             <a
               href="https://basescan.org/address/0x63be961f1a2985a4596a39db6dccfebee0feae88"
@@ -210,6 +187,32 @@ function App() {
           </p>
         </>
       )}
+      <div>
+        {status !== "connected" && (
+          <div>
+            <h3 className="connect-header">Connect wallet to join Flexclub</h3>
+            <div className="wallet-connect-container">
+              {connectors.map((connector) => (
+                <button
+                  key={connector.id}
+                  onClick={() => connect({ connector })}
+                  type="button"
+                >
+                  {connector.name}
+                </button>
+              ))}
+            </div>
+            <div>{error?.message}</div>
+          </div>
+        )}
+      </div>
+      <div>
+        {status === "connected" && (
+          <button type="button" onClick={() => disconnect()}>
+            Logout
+          </button>
+        )}
+      </div>
     </div>
   );
 }
