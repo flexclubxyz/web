@@ -128,8 +128,11 @@ function App() {
   return (
     <div className="container">
       <div>
-        <h2>Welcome to Flexclub</h2>
-        <p>Onchain goal based saving clubs. The fun way to save onchain!</p>
+        {status !== "connected" && <h2>Welcome to Flexclub</h2>}
+        {status !== "connected" && (
+          <p>Onchain goal based saving clubs. The fun way to save onchain!</p>
+        )}
+        {status === "connected" && <h2>Welcome back to Flexclub</h2>}
 
         {/* <div>
           status: {status}
@@ -139,7 +142,7 @@ function App() {
 
         {status === "connected" && (
           <button type="button" onClick={() => disconnect()}>
-            Disconnect
+            Logout
           </button>
         )}
       </div>
