@@ -170,14 +170,14 @@ function App() {
         <>
           <div className="mt-6">
             <h3 className="text-lg font-medium mb-2">
-              DEPOSIT (Only make USDC deposits on Base)
+              DEPOSIT: Only deposit USDC on Base
             </h3>
             <Deposit onDepositSuccess={handleDepositSuccess} />
           </div>
 
           <div className="mt-6">
             <h3 className="text-lg font-medium mb-2">
-              WITHDRAW (Only withdraw to Base USDC wallets)
+              WITHDRAW: Only withdraw USDC on Base
             </h3>
             <Withdraw onWithdrawSuccess={handleWithdrawSuccess} />
           </div>

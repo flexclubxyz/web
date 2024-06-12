@@ -13,6 +13,7 @@ interface DepositProps {
 export function Deposit({ onDepositSuccess }: DepositProps) {
   const [amount, setAmount] = useState("");
   const { address } = useAccount();
+  const [loading, setLoading] = useState(false);
 
   const { mutate } = useMutation({
     mutationFn: async () => {
@@ -27,6 +28,7 @@ export function Deposit({ onDepositSuccess }: DepositProps) {
 
       // Check USDC allowance
       try {
+        setLoading(true);
         const allowance = await readContract(config, {
           abi: usdcABI,
           address: usdcAddress,
@@ -67,6 +69,8 @@ export function Deposit({ onDepositSuccess }: DepositProps) {
         onDepositSuccess();
       } catch (error) {
         console.error("Error during contract interaction:", error);
+      } finally {
+        setLoading(false);
       }
     },
   });
@@ -78,13 +82,18 @@ export function Deposit({ onDepositSuccess }: DepositProps) {
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
         placeholder="Amount in USDC"
-        className="p-2 rounded-md border border-gray-300 w-full md:w-auto"
+        className="p-2 rounded-md border border-gray-300 text-black w-full md:w-1/2"
       />
       <button
         onClick={() => mutate()}
-        className="p-2 bg-blue-600 rounded-md text-white hover:bg-blue-700"
+        className="p-2 bg-blue-600 rounded-md text-white hover:bg-blue-700 w-full md:w-1/2"
+        disabled={loading}
       >
-        Deposit USDC
+        {loading ? (
+          <div className="loader border-t-transparent border-4 border-white rounded-full w-4 h-4 mx-auto"></div>
+        ) : (
+          "Deposit USDC"
+        )}
       </button>
     </div>
   );
