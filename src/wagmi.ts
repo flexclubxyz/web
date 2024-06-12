@@ -1,24 +1,13 @@
-import { http, createConfig } from "wagmi";
-import { mainnet, sepolia, base } from "@wagmi/core/chains";
-// import { coinbaseWallet, injected, walletConnect } from "wagmi/connectors";
+import "@rainbow-me/rainbowkit/styles.css";
 
-export const config = createConfig({
-  chains: [mainnet, sepolia, base],
-  connectors: [
-    // injected(),
-    // coinbaseWallet({ appName: "Create Wagmi" }),
-    // walletConnect({ projectId, String: process.env.NEXT_PUBLIC_WC_PROJECT_ID }),
-  ],
-  ssr: true,
-  transports: {
-    [mainnet.id]: http(),
-    [sepolia.id]: http(),
-    [base.id]: http(),
-  },
+import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { WagmiProvider } from "wagmi";
+import { mainnet, polygon, optimism, arbitrum, base } from "wagmi/chains";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+
+export const config = getDefaultConfig({
+  appName: "My RainbowKit App",
+  projectId: process.env.NEXT_PUBLIC_WC_PROJECT_ID || "",
+  chains: [mainnet, polygon, optimism, arbitrum, base],
+  ssr: true, // If your dApp uses server side rendering (SSR)
 });
-
-declare module "wagmi" {
-  interface Register {
-    config: typeof config;
-  }
-}
