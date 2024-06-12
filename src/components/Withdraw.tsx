@@ -13,6 +13,7 @@ export function Withdraw({
 }) {
   const [amount, setAmount] = useState("");
   const { address } = useAccount();
+  const [loading, setLoading] = useState(false);
 
   const { mutate } = useMutation({
     mutationFn: async () => {
@@ -27,6 +28,7 @@ export function Withdraw({
 
       // Proceed with the withdrawal
       try {
+        setLoading(true);
         await writeContract(config, {
           abi: contractABI,
           address: contractAddress,
@@ -38,6 +40,8 @@ export function Withdraw({
         onWithdrawSuccess(); // Call the success callback
       } catch (error) {
         console.error("Error during contract interaction:", error);
+      } finally {
+        setLoading(false);
       }
     },
   });
@@ -49,13 +53,18 @@ export function Withdraw({
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
         placeholder="Amount in USDC"
-        className="p-2 rounded-md border border-gray-300 w-full md:w-auto"
+        className="p-2 rounded-md border border-gray-300 text-black w-full md:w-1/2"
       />
       <button
         onClick={() => mutate()}
-        className="p-2 bg-blue-600 rounded-md text-white hover:bg-blue-700"
+        className="p-2 bg-blue-600 rounded-md text-white hover:bg-blue-700 w-full md:w-1/2"
+        disabled={loading}
       >
-        Withdraw USDC
+        {loading ? (
+          <div className="loader border-t-transparent border-4 border-white rounded-full w-4 h-4 mx-auto"></div>
+        ) : (
+          "Withdraw USDC"
+        )}
       </button>
     </div>
   );
