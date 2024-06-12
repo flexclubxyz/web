@@ -126,12 +126,18 @@ function App() {
     }).format(value / 1e6); // Convert from 6 decimal places
   };
 
+  const handleConnect = () => {
+    if (connectors.length > 0) {
+      connect({ connector: connectors[0] });
+    }
+  };
+
   return (
-    <div className="max-w-lg mx-auto bg-gray-800 text-white rounded-lg shadow-md p-6">
-      <div className="flex items-center space-x-3 mb-4">
-        <img src="/logo.png" alt="Flexclub logo" className="h-10" />
+    <div className="max-w-lg mx-auto bg-gray-800 text-white rounded-lg shadow-md p-6 mt-4">
+      <header className="flex items-center space-x-4 mb-4">
+        <img src="/favicon.ico" alt="Flexclub Logo" className="w-8 h-8" />
         <h1 className="text-2xl font-bold">Flexclub</h1>
-      </div>
+      </header>
       <div>
         {status !== "connected" && (
           <h2 className="text-2xl font-bold mb-2">Welcome to Flexclub</h2>
@@ -146,33 +152,26 @@ function App() {
         )}
       </div>
 
-      <div className="mt-6 bg-gray-900 p-4 rounded-md shadow-md">
+      <div className="mt-6">
         <h2 className="text-xl font-semibold mb-2">FLEXCLUB 001</h2>
-        <div>
+        <div className="bg-gray-900 p-4 rounded-md">
           <h3 className="text-lg font-medium mb-1">Devcon Bangkok Trip</h3>
-        </div>
-        <p className="text-gray-400 mb-2">
-          Saving to attend Devcon 2024 in Bangkok 🇹🇭
-        </p>
-        <div className="space-y-1">
-          <p>
+          <p className="text-sm mb-2">
+            Saving to attend Devcon 2024 in Bangkok 🇹🇭
+          </p>
+          <p className="mb-1">
             <span className="font-semibold">Target:</span>{" "}
             {formatUSDC(goalInfo.target)} USDC 🎯
           </p>
-          <p>
+          <p className="mb-1">
             <span className="font-semibold">Pooled by members:</span>{" "}
             {formatUSDC(goalInfo.pooledWithInterest)} USDC 🤑
           </p>
-          <p>
+          <p className="mb-1">
             <span className="font-semibold">Members in the club:</span>{" "}
             {goalInfo.flexers} 🌀
           </p>
         </div>
-        {status === "connected" && (
-          <h4 className="text-lg font-medium mt-2">
-            Your Flexclub balance: {formatUSDC(effectiveBalance)} USDC 💰
-          </h4>
-        )}
       </div>
 
       {successMessage && (
@@ -185,14 +184,14 @@ function App() {
         <>
           <div className="mt-6">
             <h3 className="text-lg font-medium mb-2">
-              DEPOSIT (Only make USDC deposits on Base)
+              DEPOSIT: Only deposit USDC on Base
             </h3>
             <Deposit onDepositSuccess={handleDepositSuccess} />
           </div>
 
           <div className="mt-6">
             <h3 className="text-lg font-medium mb-2">
-              WITHDRAW (Only withdraw to Base USDC wallets)
+              WITHDRAW: Only withdraw USDC on Base
             </h3>
             <Withdraw onWithdrawSuccess={handleWithdrawSuccess} />
           </div>
@@ -209,34 +208,27 @@ function App() {
           </p>
         </>
       )}
-      <div>
+
+      <div className="mt-6">
         {status !== "connected" && (
           <div>
             <h3 className="text-lg font-medium mb-2 connect-header">
-              Connect wallet to join Flexclub ⬇️ ⬇️ ⬇️
+              Join Flexclub
             </h3>
-            <div className="wallet-connect-container space-y-2">
-              {connectors.map((connector) => (
-                <button
-                  key={connector.id}
-                  onClick={() => connect({ connector })}
-                  type="button"
-                  className="w-full p-2 bg-blue-600 rounded-md text-white hover:bg-blue-700"
-                >
-                  {connector.name}
-                </button>
-              ))}
-            </div>
-            <div className="text-red-500 mt-2">{error?.message}</div>
+            <button
+              onClick={handleConnect}
+              className="w-full p-3 bg-blue-600 rounded-md text-white hover:bg-blue-700"
+            >
+              Connect Wallet
+            </button>
+            {error && <div className="text-red-500 mt-2">{error.message}</div>}
           </div>
         )}
-      </div>
-      <div className="mt-4">
         {status === "connected" && (
           <button
             type="button"
             onClick={() => disconnect()}
-            className="w-full p-2 bg-red-600 rounded-md text-white hover:bg-red-700"
+            className="w-full p-2 mt-4 bg-red-600 rounded-md text-white hover:bg-red-700"
           >
             Logout
           </button>
