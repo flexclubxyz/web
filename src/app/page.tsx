@@ -222,7 +222,7 @@ function App() {
         {status !== "connected" && (
           <div className="text-center mt-8">
             <h3 className="text-lg font-bold mb-4 connect-header">
-              Join Flexclub
+              Create Account
             </h3>
             <div className="flex justify-center mt-4">
               <ConnectButton
@@ -230,7 +230,7 @@ function App() {
                   smallScreen: "avatar",
                   largeScreen: "full",
                 }}
-                label="Connect Wallet"
+                label="JOIN FLEXCLUB"
                 showBalance={false}
               />
             </div>
