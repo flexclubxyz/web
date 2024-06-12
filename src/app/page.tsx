@@ -222,15 +222,15 @@ function App() {
         {status !== "connected" && (
           <div className="text-center mt-8">
             <h3 className="text-lg font-bold mb-4 connect-header">
-              Create Account
+              Join Flexclub
             </h3>
             <div className="flex justify-center mt-4">
               <ConnectButton
                 accountStatus={{
-                  smallScreen: "avatar",
+                  smallScreen: "full",
                   largeScreen: "full",
                 }}
-                label="JOIN FLEXCLUB"
+                label="Connect Wallet"
                 showBalance={false}
               />
             </div>
@@ -240,7 +240,7 @@ function App() {
           <div className="flex justify-center mt-8">
             <ConnectButton
               accountStatus={{
-                smallScreen: "avatar",
+                smallScreen: "full",
                 largeScreen: "full",
               }}
               showBalance={true}
