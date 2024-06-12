@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import { type ReactNode } from "react";
 import { Providers } from "./providers";
 import Image from "next/image";
-import logo from "../../public/logo.png"; // Adjust the path if needed
+import logo from "../../public/logo.png";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,12 +19,14 @@ export default function RootLayout(props: { children: ReactNode }) {
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className={`${inter.className} bg-white`}>
-        <div className="bg-white min-h-screen">
+      <body className={`${inter.className} bg-white dark:bg-gray-900`}>
+        <div className="bg-white dark:bg-gray-900 min-h-screen">
           <div className="flex justify-start p-6">
             <div className="flex items-center space-x-2">
               <Image src={logo} alt="Flexclub Logo" width={50} height={50} />
-              <span className="text-2xl font-bold">Flexclub</span>
+              <span className="text-2xl font-bold text-gray-800 dark:text-white">
+                Flexclub
+              </span>
             </div>
           </div>
           <Providers>{props.children}</Providers>
