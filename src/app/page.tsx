@@ -128,6 +128,10 @@ function App() {
 
   return (
     <div className="max-w-lg mx-auto bg-gray-800 text-white rounded-lg shadow-md p-6">
+      <div className="flex items-center space-x-3 mb-4">
+        <img src="/logo.png" alt="Flexclub logo" className="h-10" />
+        <h1 className="text-2xl font-bold">Flexclub</h1>
+      </div>
       <div>
         {status !== "connected" && (
           <h2 className="text-2xl font-bold mb-2">Welcome to Flexclub</h2>
@@ -142,19 +146,30 @@ function App() {
         )}
       </div>
 
-      <div className="mt-6">
+      <div className="mt-6 bg-gray-900 p-4 rounded-md shadow-md">
         <h2 className="text-xl font-semibold mb-2">FLEXCLUB 001</h2>
         <div>
           <h3 className="text-lg font-medium mb-1">Devcon Bangkok Trip</h3>
         </div>
-        <p className="mb-1">Saving to attend Devcon 2024 in Bangkok 🇹🇭</p>
-        <p className="mb-1">- Target: {formatUSDC(goalInfo.target)} USDC 🎯</p>
-        <p className="mb-1">
-          - Pooled by members: {formatUSDC(goalInfo.pooledWithInterest)} USDC 🤑
+        <p className="text-gray-400 mb-2">
+          Saving to attend Devcon 2024 in Bangkok 🇹🇭
         </p>
-        <p className="mb-1">- Members in the club: {goalInfo.flexers} 🌀</p>
+        <div className="space-y-1">
+          <p>
+            <span className="font-semibold">Target:</span>{" "}
+            {formatUSDC(goalInfo.target)} USDC 🎯
+          </p>
+          <p>
+            <span className="font-semibold">Pooled by members:</span>{" "}
+            {formatUSDC(goalInfo.pooledWithInterest)} USDC 🤑
+          </p>
+          <p>
+            <span className="font-semibold">Members in the club:</span>{" "}
+            {goalInfo.flexers} 🌀
+          </p>
+        </div>
         {status === "connected" && (
-          <h4 className="text-lg font-medium mb-1">
+          <h4 className="text-lg font-medium mt-2">
             Your Flexclub balance: {formatUSDC(effectiveBalance)} USDC 💰
           </h4>
         )}
@@ -170,14 +185,14 @@ function App() {
         <>
           <div className="mt-6">
             <h3 className="text-lg font-medium mb-2">
-              DEPOSIT: Only deposit USDC on Base
+              DEPOSIT (Only make USDC deposits on Base)
             </h3>
             <Deposit onDepositSuccess={handleDepositSuccess} />
           </div>
 
           <div className="mt-6">
             <h3 className="text-lg font-medium mb-2">
-              WITHDRAW: Only withdraw USDC on Base
+              WITHDRAW (Only withdraw to Base USDC wallets)
             </h3>
             <Withdraw onWithdrawSuccess={handleWithdrawSuccess} />
           </div>
