@@ -72,14 +72,20 @@ export function Deposit({ onDepositSuccess }: DepositProps) {
   });
 
   return (
-    <div className="input-container">
+    <div className="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
       <input
         type="text"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
         placeholder="Amount in USDC"
+        className="p-2 rounded-md border border-gray-300 w-full md:w-auto"
       />
-      <button onClick={() => mutate()}>Deposit USDC</button>
+      <button
+        onClick={() => mutate()}
+        className="p-2 bg-blue-600 rounded-md text-white hover:bg-blue-700"
+      >
+        Deposit USDC
+      </button>
     </div>
   );
 }

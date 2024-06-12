@@ -8,6 +8,7 @@ import { Deposit } from "../components/Deposit";
 import { Withdraw } from "../components/Withdraw";
 import { config } from "@/wagmi";
 import { contractABI, contractAddress } from "../config";
+import "../styles/globals.css";
 
 function App() {
   const { status, address, chain, connector } = useAccount();
@@ -126,61 +127,67 @@ function App() {
   };
 
   return (
-    <div className="container">
+    <div className="max-w-lg mx-auto bg-gray-800 text-white rounded-lg shadow-md p-6">
       <div>
-        {status !== "connected" && <h2>Welcome to Flexclub</h2>}
         {status !== "connected" && (
-          <p>Onchain goal based saving clubs. The fun way to save onchain!</p>
+          <h2 className="text-2xl font-bold mb-2">Welcome to Flexclub</h2>
         )}
-        {status === "connected" && <h2>Welcome back to Flexclub</h2>}
-
-        {/* <div>
-          status: {status}
-          <br />
-          address: {address}
-        </div> */}
+        {status !== "connected" && (
+          <p className="mb-4">
+            Onchain goal based saving clubs. The fun way to save onchain!
+          </p>
+        )}
+        {status === "connected" && (
+          <h2 className="text-2xl font-bold mb-2">Welcome back to Flexclub</h2>
+        )}
       </div>
 
-      <div className="flexclub-section">
-        <h2>FLEXCLUB 001</h2>
+      <div className="mt-6">
+        <h2 className="text-xl font-semibold mb-2">FLEXCLUB 001</h2>
         <div>
-          <h3>Devcon Bangkok Trip</h3>
+          <h3 className="text-lg font-medium mb-1">Devcon Bangkok Trip</h3>
         </div>
-        <p>Saving to attend Devcon 2024 in Bangkok 🇹🇭</p>
-        <p>- Target: {formatUSDC(goalInfo.target)} USDC 🎯</p>
-        <p>
+        <p className="mb-1">Saving to attend Devcon 2024 in Bangkok 🇹🇭</p>
+        <p className="mb-1">- Target: {formatUSDC(goalInfo.target)} USDC 🎯</p>
+        <p className="mb-1">
           - Pooled by members: {formatUSDC(goalInfo.pooledWithInterest)} USDC 🤑
         </p>
-        <p>- Members in the club: {goalInfo.flexers} 🌀</p>
+        <p className="mb-1">- Members in the club: {goalInfo.flexers} 🌀</p>
         {status === "connected" && (
-          <h4>Your Flexclub balance: {formatUSDC(effectiveBalance)} USDC 💰</h4>
+          <h4 className="text-lg font-medium mb-1">
+            Your Flexclub balance: {formatUSDC(effectiveBalance)} USDC 💰
+          </h4>
         )}
-        {/* <p>
-          - Deadline: {new Date(goalInfo.deadline * 1000).toLocaleString()} ⏰
-        </p> */}
       </div>
 
       {successMessage && (
-        <div className="success-message">{successMessage}</div>
+        <div className="mt-4 p-2 bg-green-600 text-white rounded-md">
+          {successMessage}
+        </div>
       )}
 
       {status === "connected" && (
         <>
-          <div>
-            <h3>DEPOSIT (Only make USDC deposits on Base)</h3>
+          <div className="mt-6">
+            <h3 className="text-lg font-medium mb-2">
+              DEPOSIT (Only make USDC deposits on Base)
+            </h3>
             <Deposit onDepositSuccess={handleDepositSuccess} />
           </div>
 
-          <div>
-            <h3>WITHDRAW (Only withdraw to Base USDC wallets)</h3>
+          <div className="mt-6">
+            <h3 className="text-lg font-medium mb-2">
+              WITHDRAW (Only withdraw to Base USDC wallets)
+            </h3>
             <Withdraw onWithdrawSuccess={handleWithdrawSuccess} />
           </div>
 
-          <p>
+          <p className="mt-4">
             <a
               href="https://basescan.org/address/0x63be961f1a2985a4596a39db6dccfebee0feae88"
               target="_blank"
               rel="noopener noreferrer"
+              className="text-blue-500 underline"
             >
               Flexclub smart contract on Base
             </a>
@@ -190,27 +197,32 @@ function App() {
       <div>
         {status !== "connected" && (
           <div>
-            <h3 className="connect-header">
+            <h3 className="text-lg font-medium mb-2 connect-header">
               Connect wallet to join Flexclub ⬇️ ⬇️ ⬇️
             </h3>
-            <div className="wallet-connect-container">
+            <div className="wallet-connect-container space-y-2">
               {connectors.map((connector) => (
                 <button
                   key={connector.id}
                   onClick={() => connect({ connector })}
                   type="button"
+                  className="w-full p-2 bg-blue-600 rounded-md text-white hover:bg-blue-700"
                 >
                   {connector.name}
                 </button>
               ))}
             </div>
-            <div>{error?.message}</div>
+            <div className="text-red-500 mt-2">{error?.message}</div>
           </div>
         )}
       </div>
-      <div>
+      <div className="mt-4">
         {status === "connected" && (
-          <button type="button" onClick={() => disconnect()}>
+          <button
+            type="button"
+            onClick={() => disconnect()}
+            className="w-full p-2 bg-red-600 rounded-md text-white hover:bg-red-700"
+          >
             Logout
           </button>
         )}
