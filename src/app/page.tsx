@@ -173,7 +173,7 @@ function App() {
           </p>
           <p className="mb-1">
             <span className="font-semibold">Pooled by members:</span>{" "}
-            {formatUSDC(goalInfo.pooledWithInterest)} USDC 🤑
+            {formatUSDC(goalInfo.pooledWithInterest)} USDC 💰
           </p>
           <p className="mb-1">
             <span className="font-semibold">Members in the club:</span>{" "}
@@ -181,6 +181,13 @@ function App() {
           </p>
         </div>
       </div>
+
+      {status === "connected" && (
+        <div className="balance-section">
+          <h4 className="balance-header">Flexclub Balance 🤑</h4>
+          <p>{formatUSDC(effectiveBalance)} USDC</p>
+        </div>
+      )}
 
       {successMessage && (
         <div className="mt-4 p-2 bg-green-600 text-white rounded-md">
