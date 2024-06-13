@@ -47,61 +47,61 @@ function App() {
     switchToBase();
   }, [status, chain]);
 
-  useEffect(() => {
-    const fetchGoalInfo = async () => {
+  const fetchGoalInfo = async () => {
+    try {
+      setIsLoading(true);
+      const data = await readContract(config, {
+        abi: contractABI,
+        address: contractAddress,
+        functionName: "getGoalInfo",
+      });
+
+      const [
+        name,
+        goal,
+        pooled,
+        target,
+        deadline,
+        flexers,
+        pooledWithInterest,
+      ] = data as [string, string, number, number, number, number, number];
+
+      setGoalInfo({
+        name,
+        goal,
+        pooled: Number(pooled),
+        target: Number(target),
+        deadline: Number(deadline),
+        flexers: Number(flexers),
+        pooledWithInterest: Number(pooledWithInterest),
+      });
+    } catch (error) {
+      console.error("Error fetching goal info:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const fetchEffectiveBalance = async () => {
+    if (address) {
       try {
         setIsLoading(true);
-        const data = await readContract(config, {
+        const balance = await readContract(config, {
           abi: contractABI,
           address: contractAddress,
-          functionName: "getGoalInfo",
+          functionName: "getEffectiveBalance",
+          args: [address],
         });
-
-        const [
-          name,
-          goal,
-          pooled,
-          target,
-          deadline,
-          flexers,
-          pooledWithInterest,
-        ] = data as [string, string, number, number, number, number, number];
-
-        setGoalInfo({
-          name,
-          goal,
-          pooled: Number(pooled),
-          target: Number(target),
-          deadline: Number(deadline),
-          flexers: Number(flexers),
-          pooledWithInterest: Number(pooledWithInterest),
-        });
+        setEffectiveBalance(Number(balance));
       } catch (error) {
-        console.error("Error fetching goal info:", error);
+        console.error("Error fetching effective balance:", error);
       } finally {
         setIsLoading(false);
       }
-    };
+    }
+  };
 
-    const fetchEffectiveBalance = async () => {
-      if (address) {
-        try {
-          setIsLoading(true);
-          const balance = await readContract(config, {
-            abi: contractABI,
-            address: contractAddress,
-            functionName: "getEffectiveBalance",
-            args: [address],
-          });
-          setEffectiveBalance(Number(balance));
-        } catch (error) {
-          console.error("Error fetching effective balance:", error);
-        } finally {
-          setIsLoading(false);
-        }
-      }
-    };
-
+  useEffect(() => {
     fetchGoalInfo();
     if (status === "connected") {
       fetchEffectiveBalance();
@@ -120,10 +120,14 @@ function App() {
 
   const handleDepositSuccess = () => {
     setSuccessMessage("Deposit successful! 🎉");
+    fetchGoalInfo();
+    fetchEffectiveBalance();
   };
 
   const handleWithdrawSuccess = () => {
     setSuccessMessage("Withdrawal successful! 🎉");
+    fetchGoalInfo();
+    fetchEffectiveBalance();
   };
 
   const formatUSDC = (value: number) => {
@@ -175,11 +179,6 @@ function App() {
             <span className="font-semibold">Members in the club:</span>{" "}
             {goalInfo.flexers} 🌀
           </p>
-          {status === "connected" && (
-            <h4 className="text-lg font-medium mb-1">
-              Your Flexclub balance: {formatUSDC(effectiveBalance)} USDC 💰
-            </h4>
-          )}
         </div>
       </div>
 
@@ -221,7 +220,7 @@ function App() {
       <div>
         {status !== "connected" && (
           <div className="text-center mt-8">
-            <h3 className="text-lg font-bold mb-4 connect-header">
+            <h3 className="text-lg font-medium mb-4 connect-header">
               Join Flexclub
             </h3>
             <div className="flex justify-center mt-4">
