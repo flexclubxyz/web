@@ -120,14 +120,14 @@ function App() {
 
   const handleDepositSuccess = async () => {
     setSuccessMessage("Deposit successful! 🎉");
-    await delay(2000); // Delay of 2 seconds
+    await delay(3000); // Delay of 2 seconds
     fetchGoalInfo();
     fetchEffectiveBalance();
   };
 
   const handleWithdrawSuccess = async () => {
     setSuccessMessage("Withdrawal successful! 🎉");
-    await delay(2000); // Delay of 2 seconds
+    await delay(3000); // Delay of 2 seconds
     fetchGoalInfo();
     fetchEffectiveBalance();
   };
