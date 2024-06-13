@@ -118,17 +118,22 @@ function App() {
     }
   }, [successMessage]);
 
-  const handleDepositSuccess = () => {
+  const handleDepositSuccess = async () => {
     setSuccessMessage("Deposit successful! 🎉");
+    await delay(2000); // Delay of 2 seconds
     fetchGoalInfo();
     fetchEffectiveBalance();
   };
 
-  const handleWithdrawSuccess = () => {
+  const handleWithdrawSuccess = async () => {
     setSuccessMessage("Withdrawal successful! 🎉");
+    await delay(2000); // Delay of 2 seconds
     fetchGoalInfo();
     fetchEffectiveBalance();
   };
+
+  const delay = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
 
   const formatUSDC = (value: number) => {
     return new Intl.NumberFormat("en-US", {
