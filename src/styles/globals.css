@@ -148,7 +148,7 @@ a:hover {
 /* Mobile specific styles */
 @media (max-width: 600px) {
   body {
-    padding-top: 80px; /* Ensure extra padding for mobile devices */
+    padding-top: 20px; /* Ensure extra padding for mobile devices */
   }
 
   .container {
