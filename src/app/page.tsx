@@ -170,7 +170,7 @@ function App() {
         <div className="bg-gray-900 p-4 rounded-md">
           <h3 className="text-lg font-medium mb-1">Devcon Bangkok Trip</h3>
           <p className="text-sm mb-2">
-            Saving to attend Devcon 2024 in Bangkok 🇹🇭
+            Save to attend Devcon 2024 in Bangkok 🇹🇭
           </p>
           <p className="mb-1">
             <span className="font-semibold">Target:</span>{" "}

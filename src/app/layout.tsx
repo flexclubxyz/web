@@ -30,7 +30,7 @@ export default function RootLayout(props: { children: ReactNode }) {
             </div>
           </header>
           <Providers>
-            <div className="pt-20 sm:pt-10">{props.children}</div>{" "}
+            <div className="pt-20 sm:pt-4">{props.children}</div>{" "}
             {/* Adjust padding to accommodate the fixed header */}
           </Providers>
         </div>
