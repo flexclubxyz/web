@@ -145,7 +145,7 @@ function App() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto bg-gray-800 text-white rounded-lg shadow-md p-6 mt-4">
+    <div className="max-w-lg mx-auto bg-gray-800 text-white rounded-lg shadow-md p-6 mt-4">
       {isLoading && (
         <div className="flex justify-center mb-4">
           <div className="loader"></div>

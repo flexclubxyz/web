@@ -22,7 +22,7 @@ export default function RootLayout(props: { children: ReactNode }) {
       <body className={`${inter.className} bg-white dark:bg-gray-900`}>
         <div className="bg-white dark:bg-gray-900 min-h-screen">
           <header className="fixed w-full top-0 bg-white dark:bg-gray-900 z-50 shadow-md p-2">
-            <div className="max-w-2xl mx-auto flex items-center space-x-2 px-4">
+            <div className="max-w-2xl pl-16 mx-auto flex items-center space-x-2 px-4">
               <Image src={logo} alt="Flexclub Logo" width={50} height={50} />
               <span className="text-2xl font-bold text-gray-800 dark:text-white">
                 Flexclub
@@ -30,7 +30,7 @@ export default function RootLayout(props: { children: ReactNode }) {
             </div>
           </header>
           <Providers>
-            <div className="pt-14 sm:pt-4">{props.children}</div>
+            <div className="pt-14 sm:pt-4 page-container">{props.children}</div>
           </Providers>
         </div>
       </body>
