@@ -47,11 +47,8 @@
 
 body {
   background-color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
   margin: 0;
+  padding-top: 60px; /* Adjust padding to reduce gap */
 }
 
 .container {
@@ -150,6 +147,10 @@ a:hover {
 
 /* Mobile specific styles */
 @media (max-width: 600px) {
+  body {
+    padding-top: 80px; /* Ensure extra padding for mobile devices */
+  }
+
   .container {
     padding: 10px;
   }

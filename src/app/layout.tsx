@@ -21,15 +21,18 @@ export default function RootLayout(props: { children: ReactNode }) {
       </head>
       <body className={`${inter.className} bg-white dark:bg-gray-900`}>
         <div className="bg-white dark:bg-gray-900 min-h-screen">
-          <div className="flex justify-start p-6">
-            <div className="flex items-center space-x-2">
+          <header className="fixed w-full top-0 bg-white dark:bg-gray-900 z-50 shadow-md p-4">
+            <div className="flex items-center justify-center space-x-2">
               <Image src={logo} alt="Flexclub Logo" width={50} height={50} />
               <span className="text-2xl font-bold text-gray-800 dark:text-white">
                 Flexclub
               </span>
             </div>
-          </div>
-          <Providers>{props.children}</Providers>
+          </header>
+          <Providers>
+            <div className="pt-20 sm:pt-10">{props.children}</div>{" "}
+            {/* Adjust padding to accommodate the fixed header */}
+          </Providers>
         </div>
       </body>
     </html>
