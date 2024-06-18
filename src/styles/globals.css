@@ -213,3 +213,8 @@ a:hover {
   font-weight: 600;
   margin-bottom: 10px;
 }
+
+.page-container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
