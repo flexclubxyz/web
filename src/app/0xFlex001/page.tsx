@@ -16,7 +16,6 @@ export default function ClubPage() {
   const { clubId } = useParams();
   const { status, address, chain } = useAccount();
   const { disconnect } = useDisconnect();
-
   const [goalInfo, setGoalInfo] = useState({
     name: "",
     goal: "",
@@ -26,10 +25,10 @@ export default function ClubPage() {
     flexers: 0,
     pooledWithInterest: 0,
   });
-
   const [effectiveBalance, setEffectiveBalance] = useState(0);
   const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     async function switchToBase() {
@@ -221,18 +220,54 @@ export default function ClubPage() {
             </h3>
             <Withdraw onWithdrawSuccess={handleWithdrawSuccess} />
           </div>
-
-          <p className="mt-4">
-            <a
-              href="https://basescan.org/address/0x63be961f1a2985a4596a39db6dccfebee0feae88"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 underline"
-            >
-              Flexclub smart contract on Base
-            </a>
-          </p>
         </>
+      )}
+
+      <div className="text-center mt-4">
+        <button
+          className="how-it-works-button"
+          onClick={() => setShowModal(true)}
+        >
+          How does Flexclub work?
+        </button>
+      </div>
+      <div>
+        <p className="mt-4">
+          <a
+            href="https://basescan.org/address/0x63be961f1a2985a4596a39db6dccfebee0feae88"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 underline"
+          >
+            Flexclub smart contract on Base
+          </a>
+        </p>
+      </div>
+
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2 className="text-2xl font-bold mb-4 mt-4">
+              How does Flexclub work?
+            </h2>
+            <p className="mb-4">
+              Flexclub is an onchain goal-based saving club. Members deposit
+              USDC into a shared pool and earn interest through Aave.
+            </p>
+            <p>
+              {" "}
+              The pooled funds are used to achieve the club's goal, and members
+              can withdraw their share of the pooled funds plus earned interest
+              at any time.
+            </p>
+            <button
+              className="close-button mt-6"
+              onClick={() => setShowModal(false)}
+            >
+              Okay, got it!
+            </button>
+          </div>
+        </div>
       )}
 
       <div>

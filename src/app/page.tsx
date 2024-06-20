@@ -24,7 +24,7 @@ export default function HomePage() {
       flexers: 7,
     },
     {
-      id: "0xFlex001",
+      id: "",
       name: "FLEXCLUB 002 - Launching soon",
       goal: "Farcon 2025 in Tokyo 🇯🇵",
       target: 5000,
@@ -91,7 +91,6 @@ export default function HomePage() {
               </p>
               <p>
                 <span className="font-semibold">Members:</span> {club.flexers}{" "}
-                🌀
               </p>
               <Link href={`/${club.id}`} legacyBehavior>
                 <a className="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded ">
