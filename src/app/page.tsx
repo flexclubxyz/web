@@ -24,7 +24,7 @@ export default function HomePage() {
       flexers: 7,
     },
     {
-      id: "",
+      id: "#",
       name: "FLEXCLUB 002 - Launching soon",
       goal: "Farcon 2025 in Tokyo 🇯🇵",
       target: 5000,

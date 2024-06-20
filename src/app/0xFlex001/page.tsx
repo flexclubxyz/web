@@ -178,12 +178,12 @@ export default function ClubPage() {
             {formatUSDC(goalInfo.target)} USDC 🎯
           </p>
           <p className="mb-1">
-            <span className="font-semibold">Pooled by members:</span>{" "}
+            <span className="font-semibold">Pooled:</span>{" "}
             {formatUSDC(goalInfo.pooledWithInterest)} USDC 💰
           </p>
           <p className="mb-1">
-            <span className="font-semibold">Members in the club:</span>{" "}
-            {goalInfo.flexers} 🌀
+            <span className="font-semibold">Members:</span> {goalInfo.flexers}{" "}
+            🌀
           </p>
         </div>
       </div>
@@ -247,9 +247,9 @@ export default function ClubPage() {
       {showModal && (
         <div className="modal-overlay">
           <div className="modal-content">
-            <h2 className="text-2xl font-bold mb-4 mt-4">
+            <h3 className="text-xl font-bold mb-4 mt-4">
               How does Flexclub work?
-            </h2>
+            </h3>
             <p className="mb-4">
               Flexclub is an onchain goal-based saving club. Members deposit
               USDC into a shared pool and earn interest through Aave.
