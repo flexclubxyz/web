@@ -18,18 +18,18 @@ export default function HomePage() {
     {
       id: "0xFlex001",
       name: "FLEXCLUB 001",
-      goal: "Devcon 2024 in Bangkok 🇹🇭",
+      goal: "Devcon in Bangkok 🇹🇭",
       target: 800,
       pooled: 144.79,
       flexers: 7,
     },
     {
       id: "0xFlex001",
-      name: "FLEXCLUB 002",
+      name: "FLEXCLUB 002 - Launching soon",
       goal: "Farcon 2025 in Tokyo 🇯🇵",
       target: 5000,
-      pooled: 8000,
-      flexers: 450,
+      pooled: 0,
+      flexers: 0,
     },
   ];
 
@@ -75,12 +75,6 @@ export default function HomePage() {
       <p className="mb-6 text-center">
         Onchain goal-based saving clubs. The fun way to save onchain!
       </p>
-      {/* {status === "connected" && (
-        <div className="balance-section bg-gray-900 p-4 rounded-md mb-6 text-center">
-          <h4 className="balance-header">Flexclub Balance 🤑</h4>
-          <p>{formatUSDC(effectiveBalance)} USDC</p>
-        </div>
-      )} */}
       <div>
         <div className="space-y-4">
           {flexclubs.map((club) => (
@@ -99,8 +93,10 @@ export default function HomePage() {
                 <span className="font-semibold">Members:</span> {club.flexers}{" "}
                 🌀
               </p>
-              <Link href={`/${club.id}`} className="link">
-                Join this club
+              <Link href={`/${club.id}`} legacyBehavior>
+                <a className="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded ">
+                  Join this club 🙌
+                </a>
               </Link>
             </div>
           ))}
