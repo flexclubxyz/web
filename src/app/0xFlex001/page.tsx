@@ -228,7 +228,7 @@ export default function ClubPage() {
           className="how-it-works-button"
           onClick={() => setShowModal(true)}
         >
-          How does Flexclub work?
+          How does Flexclub work? 🤔
         </button>
       </div>
       <div>
