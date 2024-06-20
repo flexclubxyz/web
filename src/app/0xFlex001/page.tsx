@@ -170,7 +170,7 @@ export default function ClubPage() {
       </div>
 
       <div className="mt-6">
-        <h2 className="text-xl font-semibold mb-2">FLEXCLUB {clubId}</h2>
+        <h2 className="text-xl font-semibold mb-2">FLEXCLUB 001 {clubId}</h2>
         <div className="bg-gray-900 p-4 rounded-md">
           <h3 className="text-lg font-medium mb-1">{goalInfo.name}</h3>
           <p className="text-sm mb-2">{goalInfo.goal}</p>
@@ -193,6 +193,10 @@ export default function ClubPage() {
         <div className="balance-section">
           <h4 className="balance-header">Flexclub Balance 🤑</h4>
           <p>{formatUSDC(effectiveBalance)} USDC</p>
+          <p className="text-sm mt-2">
+            Your balance for this club, which includes your deposits plus
+            interest earned through Aave.
+          </p>
         </div>
       )}
 
