@@ -247,9 +247,9 @@ export default function ClubPage() {
       {showModal && (
         <div className="modal-overlay">
           <div className="modal-content">
-            <h2 className="text-2xl font-bold mb-4 mt-4">
+            <h3 className="text-xl font-bold mb-4 mt-4">
               How does Flexclub work?
-            </h2>
+            </h3>
             <p className="mb-4">
               Flexclub is an onchain goal-based saving club. Members deposit
               USDC into a shared pool and earn interest through Aave.
