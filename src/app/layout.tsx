@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "../../public/logo.png";
 import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -43,6 +44,7 @@ export default function RootLayout(props: { children: ReactNode }) {
           <Providers>
             <div className="pt-14 sm:pt-4 page-container flex-grow">
               {props.children}
+              <Analytics />
             </div>
           </Providers>
           <Footer />
