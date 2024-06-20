@@ -178,12 +178,12 @@ export default function ClubPage() {
             {formatUSDC(goalInfo.target)} USDC 🎯
           </p>
           <p className="mb-1">
-            <span className="font-semibold">Pooled by members:</span>{" "}
+            <span className="font-semibold">Pooled:</span>{" "}
             {formatUSDC(goalInfo.pooledWithInterest)} USDC 💰
           </p>
           <p className="mb-1">
-            <span className="font-semibold">Members in the club:</span>{" "}
-            {goalInfo.flexers} 🌀
+            <span className="font-semibold">Members:</span> {goalInfo.flexers}{" "}
+            🌀
           </p>
         </div>
       </div>
