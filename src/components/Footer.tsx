@@ -7,7 +7,7 @@ const Footer = () => {
       className="text-white py-4 mt-8"
     >
       <div className="mx-auto text-center">
-        <p>© 2024 Flexclub. All rights reserved.</p>
+        <p>© 2024 Flexclub Protocol.</p>
       </div>
     </footer>
   );
