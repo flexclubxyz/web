@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { type ReactNode } from "react";
 import { Providers } from "./providers";
 import Image from "next/image";
+import Link from "next/link";
 import logo from "../../public/logo.png";
 import Footer from "@/components/Footer";
 
@@ -24,10 +25,19 @@ export default function RootLayout(props: { children: ReactNode }) {
         <div className="bg-white dark:bg-gray-900 min-h-screen flex flex-col">
           <header className="fixed w-full top-0 bg-white dark:bg-gray-900 z-50 shadow-md p-2">
             <div className="max-w-2xl pl-16 mx-auto flex items-center space-x-2 px-4">
-              <Image src={logo} alt="Flexclub Logo" width={50} height={50} />
-              <span className="text-2xl font-bold text-gray-800 dark:text-white">
-                Flexclub
-              </span>
+              <Link href="/" legacyBehavior>
+                <a className="flex items-center space-x-2">
+                  <Image
+                    src={logo}
+                    alt="Flexclub Logo"
+                    width={50}
+                    height={50}
+                  />
+                  <span className="text-2xl font-bold text-gray-800 dark:text-white">
+                    Flexclub
+                  </span>
+                </a>
+              </Link>
             </div>
           </header>
           <Providers>
