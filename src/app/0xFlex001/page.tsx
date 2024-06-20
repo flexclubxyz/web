@@ -279,7 +279,7 @@ export default function ClubPage() {
             <div className="flex justify-center mt-4">
               <ConnectButton
                 accountStatus={{
-                  smallScreen: "full",
+                  smallScreen: "avatar",
                   largeScreen: "full",
                 }}
                 label="Connect Wallet"
@@ -292,7 +292,7 @@ export default function ClubPage() {
           <div className="flex justify-center mt-8">
             <ConnectButton
               accountStatus={{
-                smallScreen: "full",
+                smallScreen: "avatar",
                 largeScreen: "full",
               }}
               showBalance={true}
