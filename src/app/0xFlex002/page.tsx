@@ -222,7 +222,11 @@ export default function ClubPage() {
             <h3 className="text-lg font-medium mb-2">
               WITHDRAW: Only withdraw USDC on Base
             </h3>
-            <Withdraw onWithdrawSuccess={handleWithdrawSuccess} />
+            <Withdraw
+              contractAddress={contractAddress002}
+              contractABI={contractABI002}
+              onWithdrawSuccess={handleWithdrawSuccess}
+            />
           </div>
         </>
       )}

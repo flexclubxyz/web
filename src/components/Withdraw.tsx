@@ -4,11 +4,14 @@ import { useAccount } from "wagmi";
 import { parseUnits } from "ethers";
 import { writeContract } from "@wagmi/core";
 import { config } from "@/wagmi";
-import { contractABI, contractAddress } from "../config";
 
 export function Withdraw({
+  contractAddress,
+  contractABI,
   onWithdrawSuccess,
 }: {
+  contractAddress: string;
+  contractABI: any[];
   onWithdrawSuccess: () => void;
 }) {
   const [amount, setAmount] = useState("");
