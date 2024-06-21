@@ -8,7 +8,7 @@ import { base } from "@wagmi/core/chains";
 import { Deposit } from "../../components/Deposit";
 import { Withdraw } from "../../components/Withdraw";
 import { config } from "@/wagmi";
-import { contractABI, contractAddress } from "../../config";
+import { contractABI002, contractAddress002 } from "@/config002";
 import "../../styles/globals.css";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
@@ -52,8 +52,8 @@ export default function ClubPage() {
     try {
       setIsLoading(true);
       const data = await readContract(config, {
-        abi: contractABI,
-        address: contractAddress,
+        abi: contractABI002,
+        address: contractAddress002,
         functionName: "getGoalInfo",
       });
 
@@ -88,8 +88,8 @@ export default function ClubPage() {
       try {
         setIsLoading(true);
         const balance = await readContract(config, {
-          abi: contractABI,
-          address: contractAddress,
+          abi: contractABI002,
+          address: contractAddress002,
           functionName: "getEffectiveBalance",
           args: [address],
         });
@@ -169,7 +169,7 @@ export default function ClubPage() {
       </div>
 
       <div className="mt-6">
-        <h2 className="text-xl font-semibold mb-2">FLEXCLUB 001 {clubId}</h2>
+        <h2 className="text-xl font-semibold mb-2">FLEXCLUB 002 {clubId}</h2>
         <div className="bg-gray-900 p-4 rounded-md">
           <h3 className="text-lg font-medium mb-1">{goalInfo.name}</h3>
           <p className="text-sm mb-2">{goalInfo.goal}</p>
@@ -190,7 +190,7 @@ export default function ClubPage() {
 
       {status === "connected" && (
         <div className="balance-section">
-          <h4 className="balance-header">Flexclub 001 Balance 🤑</h4>
+          <h4 className="balance-header">Flexclub 002 Balance 🤑</h4>
           <p>{formatUSDC(effectiveBalance)} USDC</p>
           <p className="text-sm mt-2">
             Your balance for this club, which includes your deposits plus
@@ -212,8 +212,8 @@ export default function ClubPage() {
               DEPOSIT: Only deposit USDC on Base
             </h3>
             <Deposit
-              contractAddress={contractAddress}
-              contractABI={contractABI}
+              contractAddress={contractAddress002}
+              contractABI={contractABI002}
               onDepositSuccess={handleDepositSuccess}
             />
           </div>
@@ -238,7 +238,7 @@ export default function ClubPage() {
       <div>
         <p className="mt-4">
           <a
-            href="https://basescan.org/address/0x63be961f1a2985a4596a39db6dccfebee0feae88"
+            href="https://basescan.org/address/0xcE51BE974FBE7e642072cAdb87F3F63b80cD7c8E"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-500 underline"

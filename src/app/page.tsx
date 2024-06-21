@@ -20,16 +20,16 @@ export default function HomePage() {
       name: "FLEXCLUB 001",
       goal: "Devcon in Bangkok 🇹🇭",
       target: 800,
-      pooled: 144.79,
+      pooled: 129.84,
       flexers: 7,
     },
     {
-      id: "#",
-      name: "FLEXCLUB 002 - Launching soon",
-      goal: "Farcon 2025 in Tokyo 🇯🇵",
+      id: "0xFlex002",
+      name: "FLEXCLUB 002",
+      goal: "Farcon 2025 (location tbd) 🇯🇵",
       target: 5000,
       pooled: 0,
-      flexers: 0,
+      flexers: 1,
     },
   ];
 
