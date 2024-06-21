@@ -5,15 +5,17 @@ import { parseUnits } from "ethers";
 import { writeContract } from "@wagmi/core";
 import { config } from "@/wagmi";
 
+interface WithdrawProps {
+  onWithdrawSuccess: () => void;
+  contractAddress: `0x${string}`;
+  contractABI: any;
+}
+
 export function Withdraw({
+  onWithdrawSuccess,
   contractAddress,
   contractABI,
-  onWithdrawSuccess,
-}: {
-  contractAddress: string;
-  contractABI: any[];
-  onWithdrawSuccess: () => void;
-}) {
+}: WithdrawProps) {
   const [amount, setAmount] = useState("");
   const { address } = useAccount();
   const [loading, setLoading] = useState(false);

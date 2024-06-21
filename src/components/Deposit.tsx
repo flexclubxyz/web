@@ -4,18 +4,18 @@ import { useAccount } from "wagmi";
 import { parseUnits } from "ethers";
 import { writeContract, readContract } from "@wagmi/core";
 import { config } from "@/wagmi";
-import { contractABI, contractAddress, usdcABI, usdcAddress } from "@/config";
+import { contractABI, contractAddress } from "../config";
 
 interface DepositProps {
-  contractAddress: string;
-  contractABI: any[];
   onDepositSuccess: () => void;
+  contractAddress: `0x${string}`;
+  contractABI: any;
 }
 
 export function Deposit({
+  onDepositSuccess,
   contractAddress,
   contractABI,
-  onDepositSuccess,
 }: DepositProps) {
   const [amount, setAmount] = useState("");
   const { address } = useAccount();

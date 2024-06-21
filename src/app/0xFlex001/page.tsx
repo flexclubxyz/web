@@ -1,5 +1,3 @@
-"use client";
-
 import { useParams } from "next/navigation";
 import { useAccount, useDisconnect } from "wagmi";
 import { useEffect, useState } from "react";
