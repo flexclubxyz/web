@@ -4,19 +4,17 @@ import { useAccount } from "wagmi";
 import { parseUnits } from "ethers";
 import { writeContract, readContract } from "@wagmi/core";
 import { config } from "@/wagmi";
-import { contractABI, contractAddress } from "../config";
-
-interface DepositProps {
-  onDepositSuccess: () => void;
-  contractAddress: `0x${string}`;
-  contractABI: any;
-}
+import { usdcABI, usdcAddress } from "@/config";
 
 export function Deposit({
-  onDepositSuccess,
-  contractAddress,
   contractABI,
-}: DepositProps) {
+  contractAddress,
+  onDepositSuccess,
+}: {
+  contractABI: any;
+  contractAddress: `0x${string}`;
+  onDepositSuccess: () => void;
+}) {
   const [amount, setAmount] = useState("");
   const { address } = useAccount();
   const [loading, setLoading] = useState(false);
@@ -36,7 +34,7 @@ export function Deposit({
       try {
         setLoading(true);
         const allowance = await readContract(config, {
-          abi: usdcABI,
+          abi: usdcABI, // usdcABI is now properly imported
           address: usdcAddress,
           functionName: "allowance",
           args: [address, contractAddress],
@@ -51,7 +49,7 @@ export function Deposit({
           console.log("Allowance is less than amount, approving USDC");
           // Approve USDC
           await writeContract(config, {
-            abi: usdcABI,
+            abi: usdcABI, // usdcABI is now properly imported
             address: usdcAddress,
             functionName: "approve",
             args: [contractAddress, amountInUnits],
