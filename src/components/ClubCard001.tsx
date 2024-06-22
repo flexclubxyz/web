@@ -93,7 +93,8 @@ export default function ClubCard001() {
             {formatUSDC(goalInfo.pooledWithInterest)} USDC 💰
           </p>
           <p>
-            <span className="font-semibold">Members:</span> {goalInfo.flexers}
+            <span className="font-semibold">Members:</span> {goalInfo.flexers}{" "}
+            🤝
           </p>
           <p>
             <span className="font-semibold">APY:</span> 6.61% 📈

@@ -205,7 +205,7 @@ export default function ClubPage() {
           </p>
           <p className="mb-1">
             <span className="font-semibold">Members:</span> {goalInfo.flexers}{" "}
-            🌀
+            🤝
           </p>
         </div>
       </div>
@@ -214,8 +214,8 @@ export default function ClubPage() {
         <div className="balance-section">
           <h4 className="balance-header">Flexclub 001 Balance 🤑</h4>
           <p className="font-semibold">
-            {formatUSDC(effectiveBalance)} (+{""}
-            {calculateGrowthPercentage().toFixed(2)}%)
+            {formatUSDC(effectiveBalance)} USDC (+{""}
+            {calculateGrowthPercentage().toFixed(2)}%) 📈
           </p>
           <p className="text-sm mt-2">
             Your balance for this club, which includes your deposits plus
