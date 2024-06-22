@@ -99,11 +99,13 @@ export default function ClubCard001() {
           <p>
             <span className="font-semibold">APY:</span> 6.61% 📈
           </p>
-          <Link href={`/0xFlex001`} legacyBehavior>
-            <a className="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded">
-              Join this club 🙌
-            </a>
-          </Link>
+          <div className="flex justify-center">
+            <Link href={`/0xFlex001`} legacyBehavior>
+              <a className="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded">
+                Join this club 🙌
+              </a>
+            </Link>
+          </div>
         </>
       )}
     </div>
