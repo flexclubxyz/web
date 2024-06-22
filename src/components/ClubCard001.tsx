@@ -79,7 +79,7 @@ export default function ClubCard001() {
   return (
     <div className="card">
       {isLoading ? (
-        <p>Loading...</p>
+        <div className="loader border-t-transparent border-4 border-white rounded-full w-4 h-4 mx-auto"></div>
       ) : (
         <>
           <h3>{goalInfo.name}</h3>
