@@ -182,6 +182,10 @@ export default function ClubPage() {
             {formatUSDC(goalInfo.pooledWithInterest)} USDC 💰
           </p>
           <p className="mb-1">
+            <span className="font-semibold">Interest Earned:</span>{" "}
+            {formatUSDC(goalInfo.pooledWithInterest - goalInfo.pooled)} USDC 📈
+          </p>
+          <p className="mb-1">
             <span className="font-semibold">Members:</span> {goalInfo.flexers}{" "}
             🌀
           </p>
