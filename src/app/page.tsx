@@ -32,7 +32,7 @@ export default function HomePage() {
                   smallScreen: "avatar",
                   largeScreen: "full",
                 }}
-                label="Connect Wallet"
+                label="Login or Signup"
                 showBalance={false}
               />
             </div>

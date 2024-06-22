@@ -318,7 +318,7 @@ export default function ClubPage() {
                   smallScreen: "avatar",
                   largeScreen: "full",
                 }}
-                label="Connect Wallet"
+                label="Login or Signup"
                 showBalance={false}
               />
             </div>
