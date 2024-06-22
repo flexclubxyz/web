@@ -28,7 +28,7 @@ export default function HomePage() {
       name: "FLEXCLUB 002",
       goal: "Farcon 2025 (location tbd) 🇯🇵",
       target: 5000,
-      pooled: 11,
+      pooled: 17,
       flexers: 2,
     },
   ];
