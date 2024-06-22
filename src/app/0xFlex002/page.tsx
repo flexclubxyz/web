@@ -26,6 +26,7 @@ export default function ClubPage() {
     pooledWithInterest: 0,
   });
   const [effectiveBalance, setEffectiveBalance] = useState(0);
+  const [userDeposits, setUserDeposits] = useState(0);
   const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -94,8 +95,22 @@ export default function ClubPage() {
           args: [address],
         });
         setEffectiveBalance(Number(balance));
+
+        const deposits = await readContract(config, {
+          abi: contractABI002,
+          address: contractAddress002,
+          functionName: "balanceWithoutInterest",
+          args: [address],
+        });
+        setUserDeposits(Number(deposits));
+
+        console.log("Effective Balance:", balance);
+        console.log("User Deposits:", deposits);
       } catch (error) {
-        console.error("Error fetching effective balance:", error);
+        console.error(
+          "Error fetching effective balance or user deposits:",
+          error
+        );
       } finally {
         setIsLoading(false);
       }
@@ -121,14 +136,14 @@ export default function ClubPage() {
 
   const handleDepositSuccess = async () => {
     setSuccessMessage("Deposit successful! 🎉");
-    await delay(3000); // Delay of 2 seconds
+    await delay(3000); // Delay of 3 seconds
     fetchGoalInfo();
     fetchEffectiveBalance();
   };
 
   const handleWithdrawSuccess = async () => {
     setSuccessMessage("Withdrawal successful! 🎉");
-    await delay(3000); // Delay of 2 seconds
+    await delay(3000); // Delay of 3 seconds
     fetchGoalInfo();
     fetchEffectiveBalance();
   };
@@ -143,6 +158,13 @@ export default function ClubPage() {
       minimumFractionDigits: 2,
       maximumFractionDigits: 4,
     }).format(value / 1e6); // Convert from 6 decimal places
+  };
+
+  const calculateGrowthPercentage = () => {
+    if (userDeposits > 0) {
+      return ((effectiveBalance - userDeposits) / userDeposits) * 100;
+    }
+    return 0;
   };
 
   return (
@@ -182,10 +204,6 @@ export default function ClubPage() {
             {formatUSDC(goalInfo.pooledWithInterest)} USDC 💰
           </p>
           <p className="mb-1">
-            <span className="font-semibold">Interest Earned:</span>{" "}
-            {formatUSDC(goalInfo.pooledWithInterest - goalInfo.pooled)} USDC 📈
-          </p>
-          <p className="mb-1">
             <span className="font-semibold">Members:</span> {goalInfo.flexers}{" "}
             🌀
           </p>
@@ -195,10 +213,16 @@ export default function ClubPage() {
       {status === "connected" && (
         <div className="balance-section">
           <h4 className="balance-header">Flexclub 002 Balance 🤑</h4>
-          <p>{formatUSDC(effectiveBalance)} USDC</p>
+          <p className="font-semibold">
+            {formatUSDC(effectiveBalance)} (+{""}
+            {calculateGrowthPercentage().toFixed(2)}%)
+          </p>
           <p className="text-sm mt-2">
             Your balance for this club, which includes your deposits plus
             interest earned through Aave.
+          </p>
+          <p className="text-sm font-semibold mt-2">
+            Growth Percentage: {calculateGrowthPercentage().toFixed(2)}%
           </p>
         </div>
       )}
