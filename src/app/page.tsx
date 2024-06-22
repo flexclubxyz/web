@@ -22,6 +22,7 @@ export default function HomePage() {
       target: 800,
       pooled: 129.84,
       flexers: 7,
+      apy: 6.61, // Add APY information
     },
     {
       id: "0xFlex002",
@@ -30,6 +31,7 @@ export default function HomePage() {
       target: 5000,
       pooled: 17,
       flexers: 2,
+      apy: 6.61, // Add APY information
     },
   ];
 
@@ -91,6 +93,9 @@ export default function HomePage() {
               </p>
               <p>
                 <span className="font-semibold">Members:</span> {club.flexers}{" "}
+              </p>
+              <p>
+                <span className="font-semibold">APY:</span> {club.apy}% 📈
               </p>
               <Link href={`/${club.id}`} legacyBehavior>
                 <a className="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded ">
