@@ -42,13 +42,13 @@ export default function RootLayout(props: { children: ReactNode }) {
             </div>
           </header>
           <Providers>
-            <div className="pt-14 sm:pt-4 page-container flex-grow">
-              {props.children}
-              <Analytics />
-            </div>
+            <div className="pt-14 sm:pt-4 flex-grow">{props.children}</div>
           </Providers>
-          <Footer />
+          <div className="pt-14">
+            <Footer />
+          </div>
         </div>
+        <Analytics />
       </body>
     </html>
   );
