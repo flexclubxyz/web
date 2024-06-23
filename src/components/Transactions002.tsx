@@ -38,9 +38,7 @@ export default function Transactions001() {
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl text-center font-bold mb-4">
-        Latest transactions ✨{" "}
-      </h2>
+      <h2 className="text-2xl font-bold mb-4">Transactions</h2>
       {isLoading ? (
         <div className="loader"></div>
       ) : error ? (
@@ -50,9 +48,9 @@ export default function Transactions001() {
           {logs.slice(0, 2).map((log) => (
             <div
               key={log.transactionHash}
-              className="p-4 bg-gray-800 text-white rounded shadow-md"
+              className="p-4 bg-gray-800 text-white rounded"
             >
-              <p className="mb-2">
+              <p>
                 <strong>Transaction Hash:</strong>{" "}
                 <a
                   href={`https://basescan.org/tx/${log.transactionHash}`}
@@ -70,14 +68,11 @@ export default function Transactions001() {
           ))}
           {logs.length > 3 && (
             <div className="text-center mt-4">
-              <a
-                className="text-blue-500 underline"
-                href="https://basescan.org/address/0xcE51BE974FBE7e642072cAdb87F3F63b80cD7c8E"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View More Transactions
-              </a>
+              <Link href="/transactions" legacyBehavior>
+                <a className="text-blue-500 underline">
+                  View More Transactions
+                </a>
+              </Link>
             </div>
           )}
         </div>
