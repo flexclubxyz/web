@@ -23,9 +23,9 @@ export default function RootLayout(props: { children: ReactNode }) {
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className={`${inter.className} bg-white dark:bg-gray-900`}>
-        <div className="bg-white dark:bg-gray-900 min-h-screen flex flex-col">
-          <header className="fixed w-full top-0 bg-white dark:bg-gray-900 z-50 shadow-md p-2">
-            <div className="max-w-2xl lg:pl-16 mx-auto flex items-center space-x-2 px-4">
+        <div className="bg-white dark:bg-gray-900 min-h-screen flex flex-col items-center">
+          <header className="fixed w-full max-w-md top-0 bg-white dark:bg-gray-900 z-50 shadow-md p-2">
+            <div className="flex items-center space-x-2 px-4">
               <Link href="/" legacyBehavior>
                 <a className="flex items-center space-x-2">
                   <Image
@@ -41,11 +41,11 @@ export default function RootLayout(props: { children: ReactNode }) {
               </Link>
             </div>
           </header>
-          <Providers>
-            <div className="pt-14 sm:pt-4 flex-grow">{props.children}</div>
-          </Providers>
-          <div className="pt-14">
-            <Footer />
+          <div className="w-full max-w-md">
+            <Providers>
+              <div className="pt-14 sm:pt-4 flex-grow">{props.children}</div>
+            </Providers>
+            <div className="pt-14">{/* <Footer /> */}</div>
           </div>
         </div>
         <Analytics />

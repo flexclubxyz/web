@@ -252,3 +252,30 @@ a:hover {
 .card .link:hover {
   color: #d1d5db; /* Light gray on hover */
 }
+
+.transaction-card {
+  background-color: #155ab6; /* Adjust card background color to a lighter blue */
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s;
+}
+
+.transaction-card:hover {
+  background-color: #2563eb; /* Darker blue on hover */
+}
+
+.transaction-card p {
+  margin-bottom: 0.5rem;
+}
+
+.transaction-card a {
+  color: #ffffff;
+  text-decoration: underline;
+  word-break: break-all; /* Ensure long links break properly */
+}
+
+.transaction-card a:hover {
+  color: #d1d5db; /* Light gray on hover */
+}
