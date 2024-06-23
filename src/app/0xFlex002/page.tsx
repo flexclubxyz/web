@@ -11,6 +11,7 @@ import { config } from "@/wagmi";
 import { contractABI002, contractAddress002 } from "@/config002";
 import "../../styles/globals.css";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import Transactions002 from "@/components/Transactions002";
 
 export default function ClubPage() {
   const { clubId } = useParams();
@@ -269,14 +270,14 @@ export default function ClubPage() {
       </div>
       <div>
         <p className="mt-4">
-          <a
+          {/* <a
             href="https://basescan.org/address/0xcE51BE974FBE7e642072cAdb87F3F63b80cD7c8E"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-500 underline"
           >
             Flexclub smart contract on Base
-          </a>
+          </a> */}
         </p>
       </div>
 
@@ -305,6 +306,7 @@ export default function ClubPage() {
           </div>
         </div>
       )}
+      <Transactions002 />
 
       <div>
         {status !== "connected" && (
