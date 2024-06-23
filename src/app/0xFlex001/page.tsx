@@ -29,6 +29,7 @@ export default function ClubPage() {
   const [effectiveBalance, setEffectiveBalance] = useState(0);
   const [userDeposits, setUserDeposits] = useState(0);
   const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -149,6 +150,13 @@ export default function ClubPage() {
     fetchEffectiveBalance();
   };
 
+  const handleWithdrawError = (errorMessage: string) => {
+    setErrorMessage(errorMessage);
+    setTimeout(() => {
+      setErrorMessage("");
+    }, 5000); // Clear the error message after 5 seconds
+  };
+
   const delay = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -234,6 +242,12 @@ export default function ClubPage() {
         </div>
       )}
 
+      {errorMessage && (
+        <div className="mt-4 p-2 bg-red-600 text-white rounded-md">
+          {errorMessage}
+        </div>
+      )}
+
       {status === "connected" && (
         <>
           <div className="mt-6">
@@ -255,6 +269,7 @@ export default function ClubPage() {
               contractAddress={contractAddress}
               contractABI={contractABI}
               onWithdrawSuccess={handleWithdrawSuccess}
+              onWithdrawError={handleWithdrawError}
             />
           </div>
         </>

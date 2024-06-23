@@ -7,12 +7,14 @@ import { config } from "@/wagmi";
 
 interface WithdrawProps {
   onWithdrawSuccess: () => void;
+  onWithdrawError: (errorMessage: string) => void;
   contractAddress: `0x${string}`;
   contractABI: any;
 }
 
 export function Withdraw({
   onWithdrawSuccess,
+  onWithdrawError,
   contractAddress,
   contractABI,
 }: WithdrawProps) {
@@ -45,6 +47,9 @@ export function Withdraw({
         onWithdrawSuccess(); // Call the success callback
       } catch (error) {
         console.error("Error during contract interaction:", error);
+        onWithdrawError(
+          "Withdrawal failed. Please check your balance and try again."
+        );
       } finally {
         setLoading(false);
       }
