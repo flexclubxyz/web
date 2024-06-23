@@ -8,7 +8,7 @@ interface Log {
   blockNumber: string;
 }
 
-export default function Transactions001() {
+export default function Transactions002() {
   const [logs, setLogs] = useState<Log[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -48,15 +48,15 @@ export default function Transactions001() {
           {logs.slice(0, 2).map((log) => (
             <div
               key={log.transactionHash}
-              className="p-4 bg-gray-800 text-white rounded"
+              className="p-6 bg-gray-700 text-gray-100 rounded-lg shadow-lg border border-gray-600"
             >
-              <p>
+              <p className="mb-2">
                 <strong>Transaction Hash:</strong>{" "}
                 <a
                   href={`https://basescan.org/tx/${log.transactionHash}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-500 underline break-all"
+                  className="text-blue-400 underline break-all"
                 >
                   {log.transactionHash}
                 </a>
@@ -68,11 +68,14 @@ export default function Transactions001() {
           ))}
           {logs.length > 3 && (
             <div className="text-center mt-4">
-              <Link href="/transactions" legacyBehavior>
-                <a className="text-blue-500 underline">
-                  View More Transactions
-                </a>
-              </Link>
+              <a
+                className="text-blue-400 underline"
+                href="https://basescan.org/address/0x63be961f1a2985a4596a39db6dccfebee0feae88"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View More Transactions
+              </a>
             </div>
           )}
         </div>
