@@ -306,10 +306,17 @@ export default function ClubPage() {
               Flexclub is an onchain goal-based saving club. Members deposit
               USDC into a shared pool and earn interest through Aave.
             </p>
-            <p>
+            <p className="mb-4">
+              {" "}
               The pooled funds are used to achieve the club's goal, and members
               can withdraw their share of the pooled funds plus earned interest
               at any time.
+            </p>
+            <p>
+              {" "}
+              Each club is managed by its own smart contract. No funds are held
+              by Flexclub and all accounts are fully self-custodial. You are in
+              full control if your money and can withdraw at any point.
             </p>
             <button
               className="close-button mt-6"
