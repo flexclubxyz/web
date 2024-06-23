@@ -70,7 +70,7 @@ export default function Transactions002() {
             <div className="text-center mt-4">
               <a
                 className="text-blue-400 underline"
-                href="https://basescan.org/address/0x63be961f1a2985a4596a39db6dccfebee0feae88"
+                href="https://basescan.org/address/0xcE51BE974FBE7e642072cAdb87F3F63b80cD7c8E"
                 target="_blank"
                 rel="noopener noreferrer"
               >
