@@ -316,14 +316,16 @@ export default function ClubPage() {
               {" "}
               Each club is managed by its own smart contract. No funds are held
               by Flexclub and all accounts are fully self-custodial. You are in
-              full control if your money and can withdraw at any point.
+              full control of your money and can withdraw at any point.
             </p>
-            <button
-              className="close-button mt-6"
-              onClick={() => setShowModal(false)}
-            >
-              Okay, got it!
-            </button>
+            <div className="text-center">
+              <button
+                className="close-button mt-6"
+                onClick={() => setShowModal(false)}
+              >
+                Okay, got it 👌
+              </button>
+            </div>
           </div>
         </div>
       )}
