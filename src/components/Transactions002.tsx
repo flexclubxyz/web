@@ -39,7 +39,7 @@ export default function Transactions002() {
   return (
     <div className="p-4">
       <h2 className="text-2xl text-center font-bold mb-4">
-        Latest ransactions ✨
+        Latest transactions ✨
       </h2>
       {isLoading ? (
         <div className="loader"></div>
