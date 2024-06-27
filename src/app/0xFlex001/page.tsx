@@ -235,45 +235,6 @@ export default function ClubPage() {
           </p>
         </div>
       )}
-
-      {successMessage && (
-        <div className="mt-4 p-2 bg-green-600 text-white rounded-md">
-          {successMessage}
-        </div>
-      )}
-
-      {errorMessage && (
-        <div className="mt-4 p-2 bg-red-600 text-white rounded-md">
-          {errorMessage}
-        </div>
-      )}
-
-      {status === "connected" && (
-        <>
-          <div className="mt-6">
-            <h3 className="text-lg font-medium mb-2">
-              DEPOSIT: Only deposit USDC on Base
-            </h3>
-            <Deposit
-              contractAddress={contractAddress}
-              contractABI={contractABI}
-              onDepositSuccess={handleDepositSuccess}
-            />
-          </div>
-          <div className="mt-6">
-            <h3 className="text-lg font-medium mb-2">
-              WITHDRAW: Only withdraw USDC on Base
-            </h3>
-            <Withdraw
-              contractAddress={contractAddress}
-              contractABI={contractABI}
-              onWithdrawSuccess={handleWithdrawSuccess}
-              onWithdrawError={handleWithdrawError}
-            />
-          </div>
-        </>
-      )}
-
       <div className="text-center mt-4">
         <button
           className="how-it-works-button"
@@ -328,6 +289,45 @@ export default function ClubPage() {
           </div>
         </div>
       )}
+
+      {successMessage && (
+        <div className="mt-4 p-2 bg-green-600 text-white rounded-md">
+          {successMessage}
+        </div>
+      )}
+
+      {errorMessage && (
+        <div className="mt-4 p-2 bg-red-600 text-white rounded-md">
+          {errorMessage}
+        </div>
+      )}
+
+      {status === "connected" && (
+        <>
+          <div className="mt-6">
+            <h3 className="text-lg font-medium mb-2">
+              DEPOSIT: Only deposit USDC on Base
+            </h3>
+            <Deposit
+              contractAddress={contractAddress}
+              contractABI={contractABI}
+              onDepositSuccess={handleDepositSuccess}
+            />
+          </div>
+          <div className="mt-6">
+            <h3 className="text-lg font-medium mb-2">
+              WITHDRAW: Only withdraw USDC on Base
+            </h3>
+            <Withdraw
+              contractAddress={contractAddress}
+              contractABI={contractABI}
+              onWithdrawSuccess={handleWithdrawSuccess}
+              onWithdrawError={handleWithdrawError}
+            />
+          </div>
+        </>
+      )}
+
       <Transactions001 />
 
       <div>
