@@ -260,7 +260,6 @@ export default function ClubPage() {
               onDepositSuccess={handleDepositSuccess}
             />
           </div>
-
           <div className="mt-6">
             <h3 className="text-lg font-medium mb-2">
               WITHDRAW: Only withdraw USDC on Base
