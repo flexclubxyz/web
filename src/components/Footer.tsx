@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="flex justify-between items-center">
           <div className="text-sm">
             <p>&copy; 2024 Flexclub</p>
-            <p>Built with love by the Flexclub team.</p>
+            <p>Built with love on Base</p>
           </div>
           <div className="text-sm">
             <a
