@@ -90,7 +90,7 @@ export function Deposit({
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
         placeholder="Amount in USDC"
-        className="p-2 rounded-md border border-gray-300 text-black w-full md:w-1/2"
+        className="p-2 rounded-md border border-gray-300 text-black dark:text-white bg-white dark:bg-gray-800 w-full md:w-1/2"
       />
       <button
         onClick={() => setShowModal(true)} // Show modal when button is clicked
@@ -124,7 +124,7 @@ export function Deposit({
           className="p-2 bg-blue-600 rounded-md text-white hover:bg-blue-700"
           onClick={() => mutate()} // Trigger mutation to start the process
         >
-          Okay, let's proceed
+          Okay, let's proceed 👌
         </button>
       </Modal>
     </div>

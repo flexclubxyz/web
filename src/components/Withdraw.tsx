@@ -63,7 +63,7 @@ export function Withdraw({
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
         placeholder="Amount in USDC"
-        className="p-2 rounded-md border border-gray-300 text-black w-full md:w-1/2"
+        className="p-2 rounded-md border border-gray-300 text-black dark:text-white bg-white dark:bg-gray-800 w-full md:w-1/2"
       />
       <button
         onClick={() => mutate()}
