@@ -320,3 +320,25 @@ a:hover {
 .close-button:hover {
   background: #2563eb;
 }
+
+footer {
+  background-color: #ffffff; /* Light theme */
+  color: #000000; /* Light theme text */
+}
+
+footer a {
+  color: #1e40af; /* Light theme link color (blue-900) */
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.dark footer {
+  background-color: #1f2937; /* Dark theme background (gray-800) */
+  color: white; /* Dark theme text */
+}
+
+.dark footer a {
+  color: #3b82f6; /* Dark theme link color (blue-500) */
+}
