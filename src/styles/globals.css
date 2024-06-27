@@ -279,3 +279,44 @@ a:hover {
 .transaction-card a:hover {
   color: #d1d5db; /* Light gray on hover */
 }
+
+.Modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  color: black;
+  max-width: 500px;
+  width: 90%;
+  padding: 20px;
+  border-radius: 8px;
+  outline: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 1000;
+}
+
+.close-button {
+  background: #3b82f6;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.close-button:hover {
+  background: #2563eb;
+}
