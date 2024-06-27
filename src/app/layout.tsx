@@ -1,3 +1,4 @@
+// pages/_app.tsx (or the file where your RootLayout is defined)
 import "../styles/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -41,11 +42,11 @@ export default function RootLayout(props: { children: ReactNode }) {
               </Link>
             </div>
           </header>
-          <div className="w-full max-w-md">
+          <div className="w-full max-w-md flex-grow">
             <Providers>
               <div className="pt-14 sm:pt-4 flex-grow">{props.children}</div>
             </Providers>
-            <div className="pt-14">{/* <Footer /> */}</div>
+            <Footer />
           </div>
         </div>
         <Analytics />
