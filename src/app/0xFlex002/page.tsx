@@ -268,13 +268,11 @@ export default function ClubPage() {
               USDC into a shared pool and earn interest through Aave.
             </p>
             <p className="mb-4">
-              {" "}
               The pooled funds are used to achieve the club's goal, and members
               can withdraw their share of the pooled funds plus earned interest
               at any time.
             </p>
             <p>
-              {" "}
               Each club is managed by its own smart contract. No funds are held
               by Flexclub and all accounts are fully self-custodial. You are in
               full control of your money and can withdraw at any point.
@@ -306,9 +304,8 @@ export default function ClubPage() {
       {status === "connected" && (
         <>
           <div className="mt-6">
-            <h3 className="text-lg font-medium mb-2">
-              DEPOSIT: Only deposit USDC on Base
-            </h3>
+            <h3 className="text-lg font-medium mb-2">Deposit</h3>
+            <p className="text-sm mb-4">Only deposit USDC on Base</p>
             <Deposit
               contractAddress={contractAddress002}
               contractABI={contractABI002}
@@ -317,9 +314,8 @@ export default function ClubPage() {
           </div>
 
           <div className="mt-6">
-            <h3 className="text-lg font-medium mb-2">
-              WITHDRAW: Only withdraw USDC on Base
-            </h3>
+            <h3 className="text-lg font-medium mb-2">Withdraw</h3>
+            <p className="text-sm mb-4">Only withdraw USDC on Base</p>
             <Withdraw
               contractAddress={contractAddress002}
               contractABI={contractABI002}
