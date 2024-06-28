@@ -6,8 +6,7 @@ const Footer = () => {
       <div className="max-w-md mx-auto px-4">
         <div className="flex justify-between items-center">
           <div className="text-sm">
-            <p>&copy; 2024 Flexclub</p>
-            <p>Built with love on Base</p>
+            <p>&copy; 2024 Flexclub. Built with love on Base.</p>
           </div>
           <div className="text-sm">
             <a
