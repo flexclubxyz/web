@@ -198,7 +198,6 @@ export default function ClubPage() {
           <h2 className="text-2xl font-bold mb-2">hi, anon 👋 </h2>
         )}
       </div>
-
       <div className="mt-6">
         <h2 className="text-xl font-semibold mb-2">FLEXCLUB 001 {clubId}</h2>
         <div className="bg-gray-900 p-4 rounded-md">
@@ -218,7 +217,6 @@ export default function ClubPage() {
           </p>
         </div>
       </div>
-
       {status === "connected" && (
         <div className="balance-section">
           <h4 className="balance-header">Flexclub 001 Balance 🤑</h4>
@@ -305,9 +303,10 @@ export default function ClubPage() {
       {status === "connected" && (
         <>
           <div className="mt-6">
-            <h3 className="text-lg font-medium mb-2">
-              DEPOSIT: Only deposit USDC on Base
-            </h3>
+            <h3 className="text-xl font-bold mb-2">Deposit</h3>
+            <p className="mb-4 text-sm text-gray-400">
+              Only deposit USDC on Base
+            </p>
             <Deposit
               contractAddress={contractAddress}
               contractABI={contractABI}
@@ -315,9 +314,10 @@ export default function ClubPage() {
             />
           </div>
           <div className="mt-6">
-            <h3 className="text-lg font-medium mb-2">
-              WITHDRAW: Only withdraw USDC on Base
-            </h3>
+            <h3 className="text-xl font-bold mb-2">Withdraw</h3>
+            <p className="mb-4 text-sm text-gray-400">
+              Only withdraw USDC on Base
+            </p>
             <Withdraw
               contractAddress={contractAddress}
               contractABI={contractABI}
