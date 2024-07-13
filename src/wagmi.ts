@@ -1,11 +1,11 @@
-import { createConfig } from "wagmi";
-import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
-import { http } from "viem";
-import { mainnet, base } from "viem/chains";
+import { getDefaultConfig } from "@rainbow-me/rainbowkit";
+import { base } from "viem/chains";
+
+const projectId = process.env.NEXT_PUBLIC_RAINBOWKIT_PROJECT_ID || "";
 
 export const config = getDefaultConfig({
   appName: "Flexclub Rainbowkit App",
-  projectId: "e67703b72e26e5b40331c85c2aebfe63",
-  chains: [mainnet, base],
-  ssr: true, // If your dApp uses server side rendering (SSR)
+  projectId: projectId,
+  chains: [base],
+  ssr: true,
 });

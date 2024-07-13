@@ -19,15 +19,15 @@ export default function Transactions001() {
       setError(null);
       try {
         const logs = await fetchTransactions(contractAddress);
-        console.log(logs); // Log the logs
+        // console.log(logs); // Log the logs
         if (Array.isArray(logs)) {
           setLogs(logs);
         } else {
-          console.error("Expected an array of logs, got:", logs);
+          // console.error("Expected an array of logs, got:", logs);
           setError("Expected an array of logs");
         }
       } catch (error: any) {
-        console.error("Error fetching logs:", error);
+        // console.error("Error fetching logs:", error);
         setError(error.message);
       } finally {
         setIsLoading(false);
