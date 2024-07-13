@@ -42,7 +42,7 @@ export default function ClubPage() {
             chainId: base.id,
           });
         } catch (error) {
-          console.error("Failed to switch chain", error);
+          // console.error("Failed to switch chain", error);
         } finally {
           setIsLoading(false);
         }
@@ -80,7 +80,7 @@ export default function ClubPage() {
         pooledWithInterest: Number(pooledWithInterest),
       });
     } catch (error) {
-      console.error("Error fetching goal info:", error);
+      // console.error("Error fetching goal info:", error);
     } finally {
       setIsLoading(false);
     }
@@ -106,13 +106,13 @@ export default function ClubPage() {
         });
         setUserDeposits(Number(deposits));
 
-        console.log("Effective Balance:", balance);
-        console.log("User Deposits:", deposits);
+        // console.log("Effective Balance:", balance);
+        // console.log("User Deposits:", deposits);
       } catch (error) {
-        console.error(
-          "Error fetching effective balance or user deposits:",
-          error
-        );
+        // console.error(
+        //   "Error fetching effective balance or user deposits:",
+        //   error
+        // );
       } finally {
         setIsLoading(false);
       }

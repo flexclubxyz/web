@@ -66,7 +66,7 @@ export default function ClubCard001() {
         pooledWithInterest: Number(pooledWithInterest),
       });
     } catch (error) {
-      console.error("Error fetching goal info:", error);
+      // console.error("Error fetching goal info:", error);
     } finally {
       setIsLoading(false);
     }

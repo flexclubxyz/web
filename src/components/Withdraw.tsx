@@ -25,13 +25,13 @@ export function Withdraw({
   const { mutate } = useMutation({
     mutationFn: async () => {
       if (!address) {
-        console.log("No address found");
+        // console.log("No address found");
         return;
       }
 
-      console.log("Address:", address);
+      // console.log("Address:", address);
       const amountInUnits = parseUnits(amount, 6); // Convert amount to USDC (6 decimals)
-      console.log("Amount in units:", amountInUnits.toString());
+      // console.log("Amount in units:", amountInUnits.toString());
 
       // Proceed with the withdrawal
       try {
@@ -43,10 +43,10 @@ export function Withdraw({
           args: [amountInUnits],
           account: address,
         });
-        console.log("Withdrawal successful");
+        // console.log("Withdrawal successful");
         onWithdrawSuccess(); // Call the success callback
       } catch (error) {
-        console.error("Error during contract interaction:", error);
+        // console.error("Error during contract interaction:", error);
         onWithdrawError(
           "Withdrawal failed. Please check your balance and try again."
         );

@@ -5,7 +5,7 @@ import { parseUnits } from "ethers";
 import { writeContract, readContract } from "@wagmi/core";
 import { config } from "@/wagmi";
 import { usdcABI, usdcAddress } from "@/config";
-import { Modal } from "../components/Modal"; // Import the modal component
+import { Modal } from "../components/Modal";
 
 export function Deposit({
   contractABI,
@@ -19,53 +19,53 @@ export function Deposit({
   const [amount, setAmount] = useState("");
   const { address } = useAccount();
   const [loading, setLoading] = useState(false);
-  const [showModal, setShowModal] = useState(false); // State to control modal visibility
+  const [showModal, setShowModal] = useState(false);
 
   const { mutate } = useMutation({
     mutationFn: async () => {
       if (!address) {
-        console.log("No address found");
+        // console.log("No address found");
         return;
       }
 
-      setShowModal(false); // Close modal when mutation starts
+      setShowModal(false);
 
-      console.log("Address:", address);
+      // console.log("Address:", address);
       const amountInUnits = parseUnits(amount, 6); // Convert amount to USDC (6 decimals)
-      console.log("Amount in units:", amountInUnits.toString());
+      // console.log("Amount in units:", amountInUnits.toString());
 
       // Check USDC allowance
       try {
         setLoading(true);
         const allowance = await readContract(config, {
-          abi: usdcABI, // usdcABI is now properly imported
+          abi: usdcABI,
           address: usdcAddress,
           functionName: "allowance",
           args: [address, contractAddress],
         });
-        console.log("Allowance:", allowance);
+        // console.log("Allowance:", allowance);
 
         // Type assertion for allowance
         const allowanceBN = BigInt(allowance as string);
-        console.log("Allowance as BigInt:", allowanceBN.toString());
+        // console.log("Allowance as BigInt:", allowanceBN.toString());
 
         if (allowanceBN < amountInUnits) {
-          console.log("Allowance is less than amount, approving USDC");
+          // console.log("Allowance is less than amount, approving USDC");
           // Approve USDC
           await writeContract(config, {
-            abi: usdcABI, // usdcABI is now properly imported
+            abi: usdcABI,
             address: usdcAddress,
             functionName: "approve",
             args: [contractAddress, amountInUnits],
             account: address,
           });
-          console.log("USDC approved");
+          // console.log("USDC approved");
         } else {
-          console.log("Sufficient allowance, no need to approve");
+          // console.log("Sufficient allowance, no need to approve");
         }
 
         // Proceed with the deposit
-        console.log("Proceeding with deposit");
+        // console.log("Proceeding with deposit");
         await writeContract(config, {
           abi: contractABI,
           address: contractAddress,
@@ -73,10 +73,10 @@ export function Deposit({
           args: [amountInUnits],
           account: address,
         });
-        console.log("Deposit successful");
+        // console.log("Deposit successful");
         onDepositSuccess();
       } catch (error) {
-        console.error("Error during contract interaction:", error);
+        // console.error("Error during contract interaction:", error);
       } finally {
         setLoading(false);
       }
