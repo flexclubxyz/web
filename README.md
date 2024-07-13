@@ -24,13 +24,13 @@ Traditional financial systems often operate with a lack of transparency and give
 
 ## How It Works
 
-1. **Create or Join a Flexclub**: Users can create a new Flexclub or join an existing one. Each club has a specific financial goal.
+1. **Create or Join a Flexclub**: Users can create a new Flexclub or join an existing one. Each club has a specific financial goal and its own smart contract.
 2. **Deposit USDC**: Members deposit USDC into the club's smart contract on the Base network.
 3. **Earn Interest**: The pooled funds are invested in DeFi platforms like Aave to earn interest.
 4. **Achieve Goals**: Members collectively work towards achieving the club's financial goal.
 5. **Withdraw Funds**: Members can withdraw their share of the pooled funds plus the earned interest at any time.
 
-## Project Overview
+## Links
 
 - **App**: [Flexclub Web App](https://app.flexclub.xyz/)
 - **Website**: [Flexclub Landing](https://flexclub.xyz/)
