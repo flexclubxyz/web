@@ -97,7 +97,7 @@ export default function ClubCard002() {
             🤝
           </p>
           <p>
-            <span className="font-semibold">APY:</span> 6.61% 📈
+            <span className="font-semibold">APY:</span> 4.41% 📈
           </p>
           <div className="flex justify-center">
             <Link href={`/0xFlex002`} legacyBehavior>
