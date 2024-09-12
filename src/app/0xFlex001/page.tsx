@@ -106,8 +106,8 @@ export default function ClubPage() {
         });
         setUserDeposits(Number(deposits));
 
-        // console.log("Effective Balance:", balance);
-        // console.log("User Deposits:", deposits);
+        console.log("Effective Balance:", balance);
+        console.log("User Deposits:", deposits);
       } catch (error) {
         // console.error(
         //   "Error fetching effective balance or user deposits:",
