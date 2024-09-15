@@ -29,7 +29,7 @@ export function Withdraw({
         return;
       }
 
-      // console.log("Address:", address);
+      console.log("Address:", address);
       const amountInUnits = parseUnits(amount, 6); // Convert amount to USDC (6 decimals)
       // console.log("Amount in units:", amountInUnits.toString());
 
