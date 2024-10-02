@@ -102,7 +102,7 @@ export default function ClubCard001() {
           <div className="flex justify-center">
             {/* <Link href={`/0xFlex001`} legacyBehavior> */}
             <a className="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded">
-              This club is closed ❌
+              Club is closed ❌
             </a>
             {/* </Link> */}
           </div>
