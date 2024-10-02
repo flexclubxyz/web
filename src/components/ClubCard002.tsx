@@ -102,7 +102,7 @@ export default function ClubCard002() {
           <div className="flex justify-center">
             <Link href={`/0xFlex002`} legacyBehavior>
               <a className="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded">
-                Join this club 🙌
+                Join this club ✅
               </a>
             </Link>
           </div>
