@@ -1,55 +1,71 @@
 import React, { useState } from "react";
-import { useContractWrite, usePrepareContractWrite } from "wagmi";
+import { useMutation } from "@tanstack/react-query";
+import { useAccount } from "wagmi";
+import { writeContract } from "@wagmi/core";
+import { config } from "@/wagmi";
 import { ethers } from "ethers";
 
 export function DonationDeposit({
-  contractAddress,
   contractABI,
+  contractAddress,
   onDepositSuccess,
+}: {
+  contractABI: any;
+  contractAddress: `0x${string}`;
+  onDepositSuccess: () => void;
 }) {
   const [amount, setAmount] = useState("");
+  const { address } = useAccount();
   const [loading, setLoading] = useState(false);
 
-  const { config } = usePrepareContractWrite({
-    address: contractAddress,
-    abi: contractABI,
-    functionName: "deposit",
-    overrides: {
-      value: ethers.utils.parseEther(amount || "0"),
+  const { mutate } = useMutation({
+    mutationFn: async () => {
+      if (!address) {
+        return;
+      }
+
+      try {
+        setLoading(true);
+        // Convert amount to wei
+        const amountInWei = ethers.utils.parseEther(amount || "0");
+        // Proceed with the deposit
+        await writeContract(config, {
+          abi: contractABI,
+          address: contractAddress,
+          functionName: "deposit",
+          account: address,
+          overrides: {
+            value: amountInWei,
+          },
+        });
+        onDepositSuccess();
+      } catch (error) {
+        console.error("Error during contract interaction:", error);
+      } finally {
+        setLoading(false);
+      }
     },
   });
-
-  const { write } = useContractWrite({
-    ...config,
-    onSuccess() {
-      onDepositSuccess();
-    },
-    onError(error) {
-      console.error("Error during deposit:", error);
-    },
-  });
-
-  const handleDeposit = () => {
-    setLoading(true);
-    write?.();
-    setLoading(false);
-  };
 
   return (
-    <div className="mt-4">
+    <div className="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
       <input
         type="text"
-        placeholder="Amount in ETH"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
-        className="p-2 rounded-md border border-gray-300 text-black w-full"
+        placeholder="Amount in ETH"
+        className="p-2 rounded-md border border-gray-300 text-black dark:text-white bg-white dark:bg-gray-800 w-full md:w-1/2"
       />
       <button
-        onClick={handleDeposit}
-        disabled={loading || !write}
-        className="mt-2 p-2 bg-blue-600 rounded-md text-white w-full"
+        onClick={() => mutate()}
+        className="p-2 bg-blue-600 rounded-md text-white hover:bg-blue-700 w-full md:w-1/2"
+        disabled={loading}
       >
-        {loading ? "Processing..." : "Deposit ETH"}
+        {loading ? (
+          <div className="loader border-t-transparent border-4 border-white rounded-full w-4 h-4 mx-auto"></div>
+        ) : (
+          "Deposit ETH"
+        )}
       </button>
     </div>
   );
