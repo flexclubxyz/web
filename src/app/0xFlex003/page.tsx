@@ -11,6 +11,7 @@ import { config } from "@/wagmi";
 import { contractABI003, contractAddress003 } from "@/config003";
 import "../../styles/globals.css";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import Transactions003 from "@/components/Transactions003";
 
 export default function ClubPage() {
   const { status, address, chain } = useAccount();
@@ -290,7 +291,7 @@ export default function ClubPage() {
           </div>
         </div>
       )}
-
+      <Transactions003 />
       <div>
         {status !== "connected" && (
           <div className="text-center mt-8">

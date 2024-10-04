@@ -10,7 +10,7 @@ export const fetchTransactions = async (
   contractAddress: string
 ): Promise<Log[]> => {
   const apiKey = process.env.NEXT_PUBLIC_BASESCAN_API_KEY;
-  const url = `https://api.basescan.org/api?module=logs&action=getLogs&address=0xCb6Ec97b6c65dd406D69F91C31cce39bcA198A93&fromBlock=0&toBlock=latest&apikey=${apiKey}`;
+  const url = `https://api.basescan.org/api?module=logs&action=getLogs&address=0x86b03BF27Bc858c77725Dd0EbeB36653C6e6d31f&fromBlock=0&toBlock=latest&apikey=${apiKey}`;
   const response = await axios.get(url);
 
   if (response.data.result && Array.isArray(response.data.result)) {
