@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { switchChain, readContract } from "@wagmi/core";
 import { base } from "@wagmi/core/chains";
 import { DonationDeposit } from "../../components/DonationDeposit";
-import { Refund } from "../../components/DonationRefund";
+import { DonationRefund } from "../../components/DonationRefund";
 import { DonationWithdraw } from "../../components/DonationWithdraw";
 import { config } from "@/wagmi";
 import { contractABI003, contractAddress003 } from "@/config003";
@@ -186,12 +186,16 @@ export default function ClubPage() {
             <span className="font-semibold">Contributors:</span>{" "}
             {goalInfo.contributors} 🤝
           </p>
+          <p className="mb-1">
+            <span className="font-semibold">Donation Recipient:</span>{" "}
+            ashmoney.base.eth
+          </p>
         </div>
       </div>
 
       {status === "connected" && (
         <div className="balance-section">
-          <h4 className="balance-header">Your Contribution 🤑</h4>
+          <h4 className="balance-header">Your Contribution 💜 </h4>
           <p className="font-semibold">{formatETH(userBalance)} ETH</p>
           <p className="text-sm mt-2">Your total contributions to this club.</p>
         </div>
@@ -202,7 +206,7 @@ export default function ClubPage() {
           <div className="mt-6">
             <h3 className="text-lg font-medium mb-2">Deposit</h3>
             <p className="text-sm mb-4">Only deposit ETH on Base</p>
-            <Deposit
+            <DonationDeposit
               contractAddress={contractAddress003}
               contractABI={contractABI003}
               onDepositSuccess={handleDepositSuccess}
@@ -216,7 +220,7 @@ export default function ClubPage() {
                 Withdraw your deposit if funds haven't been withdrawn by the
                 donation wallet
               </p>
-              <Refund
+              <DonationRefund
                 contractAddress={contractAddress003}
                 contractABI={contractABI003}
                 onRefundSuccess={handleRefundSuccess}
