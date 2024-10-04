@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useAccount } from "wagmi";
 import { writeContract } from "@wagmi/core";
 import { config } from "@/wagmi";
-import { ethers } from "ethers";
+import { parseEther } from "ethers";
 
 export function DonationDeposit({
   contractABI,
@@ -26,17 +26,16 @@ export function DonationDeposit({
 
       try {
         setLoading(true);
-        // Convert amount to wei
-        const amountInWei = ethers.utils.parseEther(amount || "0");
+        // Convert amount to wei using parseEther from ethers v6
+        const amountInWei = parseEther(amount || "0");
         // Proceed with the deposit
         await writeContract(config, {
           abi: contractABI,
           address: contractAddress,
           functionName: "deposit",
           account: address,
-          overrides: {
-            value: amountInWei,
-          },
+          args: [],
+          value: amountInWei, // Pass value directly, not under overrides
         });
         onDepositSuccess();
       } catch (error) {
