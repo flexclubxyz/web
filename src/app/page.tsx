@@ -3,6 +3,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount } from "wagmi";
 import ClubCard001 from "@/components/ClubCard001";
 import ClubCard002 from "@/components/ClubCard002";
+import ClubCard003 from "@/components/ClubCard003"; // Import ClubCard003
 
 export default function HomePage() {
   const { status } = useAccount();
@@ -17,6 +18,7 @@ export default function HomePage() {
       </p>
       <div>
         <div className="space-y-4">
+          <ClubCard003 /> {/* Add ClubCard003 at the top */}
           <ClubCard002 />
           <ClubCard001 />
         </div>

@@ -1,0 +1,158 @@
+export const contractAddress003 = "0x86b03BF27Bc858c77725Dd0EbeB36653C6e6d31f";
+
+export const contractABI003 = [
+  {
+    inputs: [
+      { internalType: "address", name: "_donationWallet", type: "address" },
+      { internalType: "uint256", name: "_deadline", type: "uint256" },
+      { internalType: "string", name: "_goalName", type: "string" },
+      { internalType: "string", name: "_goalDescription", type: "string" },
+      { internalType: "uint256", name: "_targetAmount", type: "uint256" },
+    ],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
+  { inputs: [], name: "ReentrancyGuardReentrantCall", type: "error" },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: true, internalType: "address", name: "user", type: "address" },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    name: "Deposit",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: false, internalType: "string", name: "name", type: "string" },
+      {
+        indexed: false,
+        internalType: "string",
+        name: "description",
+        type: "string",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "pooled",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "target",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "deadline",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "contributors",
+        type: "uint256",
+      },
+    ],
+    name: "GoalInfoUpdated",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "recipient",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    name: "Withdrawal",
+    type: "event",
+  },
+  {
+    inputs: [{ internalType: "address", name: "", type: "address" }],
+    name: "balances",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "deposit",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "donationWallet",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "fundsWithdrawn",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getGoalInfo",
+    outputs: [
+      { internalType: "string", name: "name", type: "string" },
+      { internalType: "string", name: "description", type: "string" },
+      { internalType: "uint256", name: "pooled", type: "uint256" },
+      { internalType: "uint256", name: "target", type: "uint256" },
+      { internalType: "uint256", name: "deadline", type: "uint256" },
+      { internalType: "uint256", name: "contributors", type: "uint256" },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "goal",
+    outputs: [
+      { internalType: "string", name: "name", type: "string" },
+      { internalType: "string", name: "description", type: "string" },
+      { internalType: "uint256", name: "pooled", type: "uint256" },
+      { internalType: "uint256", name: "target", type: "uint256" },
+      { internalType: "uint256", name: "deadline", type: "uint256" },
+      { internalType: "uint256", name: "contributors", type: "uint256" },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "refund",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "withdraw",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  { stateMutability: "payable", type: "receive" },
+];
