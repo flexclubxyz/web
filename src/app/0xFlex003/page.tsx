@@ -13,10 +13,19 @@ import "../../styles/globals.css";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Transactions003 from "@/components/Transactions003";
 
+interface GoalInfo {
+  name: string;
+  description: string;
+  pooled: number;
+  target: number;
+  deadline: number;
+  contributors: number;
+}
+
 export default function ClubPage() {
   const { status, address, chain } = useAccount();
   const { disconnect } = useDisconnect();
-  const [goalInfo, setGoalInfo] = useState({
+  const [goalInfo, setGoalInfo] = useState<GoalInfo>({
     name: "",
     description: "",
     pooled: 0,
@@ -39,7 +48,8 @@ export default function ClubPage() {
             chainId: base.id,
           });
         } catch (error) {
-          // console.error("Failed to switch chain", error);
+          // Handle error if needed
+          console.error("Failed to switch chain", error);
         } finally {
           setIsLoading(false);
         }
@@ -69,7 +79,7 @@ export default function ClubPage() {
         contributors: Number(contributors),
       });
     } catch (error) {
-      // console.error("Error fetching goal info:", error);
+      console.error("Error fetching goal info:", error);
     } finally {
       setIsLoading(false);
     }
@@ -87,16 +97,17 @@ export default function ClubPage() {
         });
         setUserBalance(Number(balance));
 
-        const donationWalletAddress = await readContract(config, {
+        const donationWalletAddress = (await readContract(config, {
           abi: contractABI003,
           address: contractAddress003,
           functionName: "donationWallet",
-        });
+        })) as string; // Type Assertion to string
+
         setIsDonationWallet(
           address.toLowerCase() === donationWalletAddress.toLowerCase()
         );
       } catch (error) {
-        // console.error("Error fetching user balance:", error);
+        console.error("Error fetching user balance or donation wallet:", error);
       } finally {
         setIsLoading(false);
       }
@@ -214,7 +225,7 @@ export default function ClubPage() {
             />
           </div>
 
-          {parseFloat(userBalance.toString()) > 0 && (
+          {userBalance > 0 && (
             <div className="mt-6">
               <h3 className="text-lg font-medium mb-2">Refund</h3>
               <p className="text-sm mb-4">
@@ -291,7 +302,9 @@ export default function ClubPage() {
           </div>
         </div>
       )}
+
       <Transactions003 />
+
       <div>
         {status !== "connected" && (
           <div className="text-center mt-8">
