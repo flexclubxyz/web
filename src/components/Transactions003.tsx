@@ -53,7 +53,7 @@ export default function Transactions003() {
               className="p-6 bg-gray-700 text-gray-100 rounded-lg shadow-lg border border-gray-600"
             >
               <p className="mb-2">
-                <strong>Transaction Hash:</strong>{" "}
+                <strong>Donation Hash:</strong>{" "}
                 <a
                   href={`https://basescan.org/tx/${log.transactionHash}`}
                   target="_blank"
@@ -76,7 +76,7 @@ export default function Transactions003() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                View More Transactions
+                View more donations
               </a>
             </div>
           )}

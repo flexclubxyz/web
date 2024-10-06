@@ -76,11 +76,11 @@ export default function ClubCard003() {
           <h3 className="text-2xl font-bold mb-2">{goalInfo.name}</h3>
           <p className="mb-4">{goalInfo.description}</p>
           <p className="mb-1">
-            <span className="font-semibold">Target:</span>{" "}
+            <span className="font-semibold">Goal Target:</span>{" "}
             {formatETH(goalInfo.target)} ETH 🎯
           </p>
           <p className="mb-1">
-            <span className="font-semibold">Pooled:</span>{" "}
+            <span className="font-semibold">Total Raised:</span>{" "}
             {formatETH(goalInfo.pooled)} ETH 💰
           </p>
           <p className="mb-1">
