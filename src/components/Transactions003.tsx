@@ -39,7 +39,7 @@ export default function Transactions003() {
   return (
     <div className="p-4">
       <h2 className="text-2xl text-center font-bold mb-4">
-        Latest Transactions ✨
+        Latest Donations ✨
       </h2>
       {isLoading ? (
         <div className="loader"></div>
@@ -72,7 +72,7 @@ export default function Transactions003() {
             <div className="text-center mt-4">
               <a
                 className="text-blue-400 underline"
-                href={`https://basescan.org/address/${contractAddress003}`}
+                href="https://basescan.org/address/0x86b03BF27Bc858c77725Dd0EbeB36653C6e6d31f"
                 target="_blank"
                 rel="noopener noreferrer"
               >
