@@ -1,5 +1,3 @@
-// pages/page003.tsx
-
 "use client";
 
 import { useAccount, useDisconnect } from "wagmi";
@@ -15,6 +13,7 @@ import "../../styles/globals.css";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Transactions003 from "@/components/Transactions003";
 import ProgressBar from "../../components/ProgressBar";
+import FAQ from "../../components/FAQ";
 
 interface GoalInfo {
   name: string;
@@ -310,17 +309,17 @@ export default function ClubPage() {
       )}
 
       {/* How It Works Button */}
-      <div className="text-center mt-4">
+      {/* <div className="text-center mt-4">
         <button
           className="how-it-works-button"
           onClick={() => setShowModal(true)}
         >
           How does Flexclub work? 🤔
         </button>
-      </div>
+      </div> */}
 
       {/* Modal */}
-      {showModal && (
+      {/* {showModal && (
         <div className="modal-overlay">
           <div className="modal-content">
             <h3 className="text-xl font-bold mb-4 mt-4">
@@ -350,17 +349,18 @@ export default function ClubPage() {
             </div>
           </div>
         </div>
-      )}
+      )} */}
 
       {/* Transactions */}
       <Transactions003 />
+      <FAQ />
 
       {/* Connect Button */}
       <div>
         {status !== "connected" && (
           <div className="text-center mt-8">
             <h3 className="text-lg font-medium mb-4 connect-header">
-              Join Flexclub to Donate
+              Join Flexclub
             </h3>
             <div className="flex justify-center mt-4">
               <ConnectButton
