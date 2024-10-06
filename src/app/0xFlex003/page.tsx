@@ -161,11 +161,14 @@ export default function ClubPage() {
 
   return (
     <div className="max-w-lg mx-auto bg-gray-800 text-white rounded-lg shadow-md p-6 mt-4">
+      {/* Loading Spinner */}
       {isLoading && (
         <div className="flex justify-center mb-4">
           <div className="loader"></div>
         </div>
       )}
+
+      {/* Welcome Message */}
       <div>
         {status !== "connected" && (
           <h2 className="text-2xl font-bold mb-2">Welcome to Flexclub 003</h2>
@@ -181,6 +184,7 @@ export default function ClubPage() {
         )}
       </div>
 
+      {/* Club Information */}
       <div className="mt-6">
         <h2 className="text-xl font-semibold mb-2">Flexclub 003</h2>
         <div className="bg-gray-900 p-4 rounded-md">
@@ -199,12 +203,13 @@ export default function ClubPage() {
             {goalInfo.contributors} 🤝
           </p>
           <p className="mb-1">
-            <span className="font-semibold">Donation Recipient:</span>{" "}
+            <span className="font-semibold">Recipient Wallet:</span>{" "}
             ashmoney.base.eth
           </p>
         </div>
       </div>
 
+      {/* User Contribution */}
       {status === "connected" && (
         <div className="balance-section">
           <h4 className="balance-header">Your Contribution 💜 </h4>
@@ -213,18 +218,21 @@ export default function ClubPage() {
         </div>
       )}
 
+      {/* Donation Deposit Component (Always Visible) */}
+      <div className="mt-6">
+        <h2 className="text-2xl font-bold mb-2">Donate</h2>
+        <p className="text-sm mb-4">Only deposit ETH on Base</p>
+        <DonationDeposit
+          contractAddress={contractAddress003}
+          contractABI={contractABI003}
+          onDepositSuccess={handleDepositSuccess}
+        />
+      </div>
+
+      {/* Donation Actions (Visible Only When Connected) */}
       {status === "connected" && (
         <>
-          <div className="mt-6">
-            <h3 className="text-lg font-medium mb-2">Deposit</h3>
-            <p className="text-sm mb-4">Only deposit ETH on Base</p>
-            <DonationDeposit
-              contractAddress={contractAddress003}
-              contractABI={contractABI003}
-              onDepositSuccess={handleDepositSuccess}
-            />
-          </div>
-
+          {/* Refund Section */}
           {userBalance > 0 && (
             <div className="mt-6">
               <h3 className="text-lg font-medium mb-2">Refund</h3>
@@ -240,6 +248,7 @@ export default function ClubPage() {
             </div>
           )}
 
+          {/* Withdraw Funds Section */}
           {isDonationWallet && (
             <div className="mt-6">
               <h3 className="text-lg font-medium mb-2">Withdraw Funds</h3>
@@ -256,12 +265,14 @@ export default function ClubPage() {
         </>
       )}
 
+      {/* Success Message */}
       {successMessage && (
         <div className="mt-4 p-2 bg-green-600 text-white rounded-md">
           {successMessage}
         </div>
       )}
 
+      {/* How It Works Button */}
       <div className="text-center mt-4">
         <button
           className="how-it-works-button"
@@ -271,6 +282,7 @@ export default function ClubPage() {
         </button>
       </div>
 
+      {/* Modal */}
       {showModal && (
         <div className="modal-overlay">
           <div className="modal-content">
@@ -284,7 +296,7 @@ export default function ClubPage() {
             <p className="mb-4">
               The pooled funds are used to achieve the club's goal. Members can
               refund their contributions before the funds are withdrawn by the
-              donation wallet.
+              donation recipient.
             </p>
             <p>
               Each club is managed by its own smart contract. No funds are held
@@ -303,13 +315,15 @@ export default function ClubPage() {
         </div>
       )}
 
+      {/* Transactions */}
       <Transactions003 />
 
+      {/* Connect Button */}
       <div>
         {status !== "connected" && (
           <div className="text-center mt-8">
             <h3 className="text-lg font-medium mb-4 connect-header">
-              Join Flexclub
+              Join Flexclub to Donate
             </h3>
             <div className="flex justify-center mt-4">
               <ConnectButton
