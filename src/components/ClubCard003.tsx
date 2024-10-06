@@ -87,10 +87,10 @@ export default function ClubCard003() {
             <span className="font-semibold">Contributors:</span>{" "}
             {goalInfo.contributors} 🤝
           </p>
-          <p className="mb-4">
+          {/* <p className="mb-4">
             <span className="font-semibold">Deadline:</span>{" "}
             {new Date(goalInfo.deadline * 1000).toLocaleDateString()} 📅
-          </p>
+          </p> */}
           <div className="flex justify-center">
             <Link href={`/0xFlex003`} legacyBehavior>
               <a className="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition">
