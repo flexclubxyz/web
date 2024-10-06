@@ -9,7 +9,7 @@ const faqData: FAQItem[] = [
   {
     question: "What is Flexclub?",
     answer:
-      "Flexclub is an onchain goal-based savings app where members contribute into a shared pool to achieve collective goals. This club (Flexclub 003) specifially is a donation based club, with all contributions going to a recipient's wallet.",
+      "Flexclub is an onchain goal-based savings app where members contribute into a shared pool to achieve collective goals. This club (Flexclub 003) specifically is a donation based club, with all contributions going to a recipient's wallet.",
   },
   {
     question: "How can I donate?",
