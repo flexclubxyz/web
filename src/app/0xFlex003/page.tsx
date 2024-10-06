@@ -184,7 +184,7 @@ export default function ClubPage() {
       {/* Welcome Message */}
       <div>
         {status !== "connected" && (
-          <h2 className="text-2xl font-bold mb-2">Welcome to Flexclub 003</h2>
+          <h2 className="text-2xl font-bold mb-2">Welcome to Flexclub</h2>
         )}
         {status !== "connected" && (
           <p className="mb-4">
