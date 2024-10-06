@@ -14,7 +14,7 @@ import { contractABI003, contractAddress003 } from "@/config003";
 import "../../styles/globals.css";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Transactions003 from "@/components/Transactions003";
-import ProgressBar from "../../components/ProgressBar"; // Import ProgressBar
+import ProgressBar from "../../components/ProgressBar";
 
 interface GoalInfo {
   name: string;
