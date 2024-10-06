@@ -248,7 +248,7 @@ export default function ClubPage() {
           <h4 className="balance-header">Contributions </h4>
           <p className="font-semibold">{formatETH(userBalance)} ETH</p>
           <p className="text-sm mt-2">
-            Your total contributions to this club. Thank you for contibuting.
+            Your total contributions to this club. Thank you for contributing.
           </p>
         </div>
       )}
@@ -256,7 +256,9 @@ export default function ClubPage() {
       {/* Donation Deposit Component (Always Visible) */}
       <div className="mt-6">
         <h2 className="text-lg font-bold mb-2">Donate</h2>
-        <p className="text-sm mb-4">Only deposit ETH on Base</p>
+        <p className="text-sm mb-4">
+          Make a deposit to donate to this goal. Only deposit ETH on Base.
+        </p>
         <DonationDeposit
           contractAddress={contractAddress003}
           contractABI={contractABI003}
