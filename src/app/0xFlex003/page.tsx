@@ -204,11 +204,11 @@ export default function ClubPage() {
           <h3 className="text-lg font-medium mb-1">{goalInfo.name}</h3>
           <p className="text-sm mb-2">{goalInfo.description}</p>
           <p className="mb-1">
-            <span className="font-semibold">Target:</span>{" "}
+            <span className="font-semibold">Goal Target:</span>{" "}
             {formatETH(goalInfo.target)} ETH 🎯
           </p>
           <p className="mb-1">
-            <span className="font-semibold">Pooled:</span>{" "}
+            <span className="font-semibold">Total Raised:</span>{" "}
             {formatETH(goalInfo.pooled)} ETH 💰
           </p>
           <p className="mb-1">
@@ -267,7 +267,7 @@ export default function ClubPage() {
             <div className="mt-6">
               <h3 className="text-lg font-medium mb-2">Refund</h3>
               <p className="text-sm mb-4">
-                Withdraw your deposit if funds haven't been withdrawn by the
+                Refund your deposit if funds haven't been withdrawn by the
                 donation wallet
               </p>
               <DonationRefund
