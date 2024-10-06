@@ -68,7 +68,7 @@ export default function Transactions003() {
               </p>
             </div>
           ))}
-          {logs.length > 3 && (
+          {logs.length > 2 && (
             <div className="text-center mt-4">
               <a
                 className="text-blue-400 underline"
