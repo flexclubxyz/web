@@ -98,9 +98,9 @@ export function DonationDeposit({
         {loading ? (
           <div className="loader border-t-transparent border-4 border-white rounded-full w-4 h-4 mx-auto"></div>
         ) : status === "connected" ? (
-          "Donate ETH"
+          "Donate"
         ) : (
-          "Donate ETH"
+          "Donate"
         )}
       </button>
     </div>

@@ -44,7 +44,7 @@ export function DonationRefund({
   return (
     <button
       onClick={() => mutate()}
-      className="p-2 bg-red-600 rounded-md text-white hover:bg-red-700 w-full"
+      className="p-2 bg-green-600 rounded-md text-white hover:bg-green-700 w-full"
       disabled={loading}
     >
       {loading ? (

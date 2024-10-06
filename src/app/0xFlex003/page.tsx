@@ -267,8 +267,8 @@ export default function ClubPage() {
             <div className="mt-6">
               <h3 className="text-lg font-medium mb-2">Refund</h3>
               <p className="text-sm mb-4">
-                Refund your deposit if funds haven't been withdrawn by the
-                donation wallet
+                Request a refund on your donation if funds haven't been
+                withdrawn by the donation recipient
               </p>
               <DonationRefund
                 contractAddress={contractAddress003}
