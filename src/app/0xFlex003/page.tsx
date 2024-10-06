@@ -159,6 +159,19 @@ export default function ClubPage() {
     return (value / 1e18).toFixed(4); // Convert from wei to ETH
   };
 
+  // Function to copy text to clipboard
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text).then(
+      () => {
+        // Optional: Add a success toast or other feedback
+        // e.g., toast.success("Copied to clipboard!");
+      },
+      (err) => {
+        console.error("Could not copy text: ", err);
+      }
+    );
+  };
+
   return (
     <div className="max-w-lg mx-auto bg-gray-800 text-white rounded-lg shadow-md p-6 mt-4">
       {/* Loading Spinner */}
@@ -202,16 +215,33 @@ export default function ClubPage() {
             <span className="font-semibold">Contributors:</span>{" "}
             {goalInfo.contributors} 🤝
           </p>
-          <p className="mb-1">
-            <span className="font-semibold">Recipient Wallet:</span>{" "}
-            ashmoney.base.eth
-          </p>
+          {/* Removed Recipient Wallet from here */}
+        </div>
+      </div>
+
+      {/* Recipient Wallet Card */}
+      <div className="mt-6">
+        <h3 className="text-lg font-medium mb-2">Donation Recipient</h3>
+        <div className="bg-gray-900 p-4 rounded-md flex items-center justify-between">
+          <div>
+            <p className="mb-1">
+              <span className="font-semibold">Recipient Base Name:</span>{" "}
+              <a
+                href="https://www.base.org/name/ashmoney"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:underline"
+              >
+                ashmoney.base.eth
+              </a>
+            </p>
+          </div>
         </div>
       </div>
 
       {/* User Contribution */}
       {status === "connected" && (
-        <div className="balance-section">
+        <div className="balance-section mt-6">
           <h4 className="balance-header">Your Contribution 💜 </h4>
           <p className="font-semibold">{formatETH(userBalance)} ETH</p>
           <p className="text-sm mt-2">Your total contributions to this club.</p>
