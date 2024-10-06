@@ -38,7 +38,7 @@ export default function Transactions003() {
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl text-center font-bold mb-4">
+      <h2 className="text-lg text-center font-medium mb-4">
         Latest Donations ✨
       </h2>
       {isLoading ? (

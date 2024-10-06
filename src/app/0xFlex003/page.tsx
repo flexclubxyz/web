@@ -221,7 +221,7 @@ export default function ClubPage() {
 
       {/* Recipient Wallet Card */}
       <div className="mt-6">
-        <h3 className="text-lg font-medium mb-2">Donation Recipient</h3>
+        <h3 className="text-lg font-bold mb-2">Donation Recipient</h3>
         <div className="bg-gray-900 p-4 rounded-md flex items-center justify-between">
           <div>
             <p className="mb-1">
@@ -250,7 +250,7 @@ export default function ClubPage() {
 
       {/* Donation Deposit Component (Always Visible) */}
       <div className="mt-6">
-        <h2 className="text-2xl font-bold mb-2">Donate</h2>
+        <h2 className="text-lg font-bold mb-2">Donate</h2>
         <p className="text-sm mb-4">Only deposit ETH on Base</p>
         <DonationDeposit
           contractAddress={contractAddress003}
