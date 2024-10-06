@@ -225,7 +225,7 @@ export default function ClubPage() {
         <div className="bg-gray-900 p-4 rounded-md flex items-center justify-between">
           <div>
             <p className="mb-1">
-              <span className="font-semibold">Recipient Base Name:</span>{" "}
+              <span className="font-semibold">Base Name:</span>{" "}
               <a
                 href="https://www.base.org/name/ashmoney"
                 target="_blank"
