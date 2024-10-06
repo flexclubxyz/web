@@ -12,6 +12,7 @@ import { contractABI002, contractAddress002 } from "@/config002";
 import "../../styles/globals.css";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Transactions002 from "@/components/Transactions002";
+import ProgressBar from "../../components/ProgressBar";
 
 export default function ClubPage() {
   const { clubId } = useParams();
@@ -216,6 +217,7 @@ export default function ClubPage() {
             <span className="font-semibold">Members:</span> {goalInfo.flexers}{" "}
             🤝
           </p>
+          <ProgressBar current={goalInfo.pooled} target={goalInfo.target} />
         </div>
       </div>
 
