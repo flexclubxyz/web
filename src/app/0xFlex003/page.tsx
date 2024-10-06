@@ -1,3 +1,5 @@
+// pages/page003.tsx
+
 "use client";
 
 import { useAccount, useDisconnect } from "wagmi";
@@ -12,6 +14,7 @@ import { contractABI003, contractAddress003 } from "@/config003";
 import "../../styles/globals.css";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Transactions003 from "@/components/Transactions003";
+import ProgressBar from "../../components/ProgressBar"; // Import ProgressBar
 
 interface GoalInfo {
   name: string;
@@ -215,7 +218,7 @@ export default function ClubPage() {
             <span className="font-semibold">Contributors:</span>{" "}
             {goalInfo.contributors} 🤝
           </p>
-          {/* Removed Recipient Wallet from here */}
+          <ProgressBar current={goalInfo.pooled} target={goalInfo.target} />
         </div>
       </div>
 
@@ -242,9 +245,11 @@ export default function ClubPage() {
       {/* User Contribution */}
       {status === "connected" && (
         <div className="balance-section mt-6">
-          <h4 className="balance-header">Your Contribution 💜 </h4>
+          <h4 className="balance-header">Contributions </h4>
           <p className="font-semibold">{formatETH(userBalance)} ETH</p>
-          <p className="text-sm mt-2">Your total contributions to this club.</p>
+          <p className="text-sm mt-2">
+            Your total contributions to this club. Thank you for contibuting.
+          </p>
         </div>
       )}
 
