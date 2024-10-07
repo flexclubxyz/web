@@ -102,7 +102,7 @@ export function Deposit({
         {loading ? (
           <div className="loader border-t-transparent border-4 border-white rounded-full w-4 h-4 mx-auto"></div>
         ) : (
-          "Deposit USDC"
+          "Deposit"
         )}
       </button>
 
