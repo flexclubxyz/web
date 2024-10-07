@@ -13,6 +13,7 @@ import "../../styles/globals.css";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Transactions002 from "@/components/Transactions002";
 import ProgressBar from "../../components/ProgressBar";
+import FAQ from "../../components/FAQ002";
 
 export default function ClubPage() {
   const { clubId } = useParams();
@@ -238,14 +239,14 @@ export default function ClubPage() {
         </div>
       )}
 
-      <div className="text-center mt-4">
+      {/* <div className="text-center mt-4">
         <button
           className="how-it-works-button"
           onClick={() => setShowModal(true)}
         >
           How does Flexclub work? 🤔
         </button>
-      </div>
+      </div> */}
       <div>
         <p className="mt-4">
           {/* <a
@@ -259,7 +260,7 @@ export default function ClubPage() {
         </p>
       </div>
 
-      {showModal && (
+      {/* {showModal && (
         <div className="modal-overlay">
           <div className="modal-content">
             <h3 className="text-xl font-bold mb-4 mt-4">
@@ -289,7 +290,7 @@ export default function ClubPage() {
             </div>
           </div>
         </div>
-      )}
+      )} */}
 
       {successMessage && (
         <div className="mt-4 p-2 bg-green-600 text-white rounded-md">
@@ -329,6 +330,7 @@ export default function ClubPage() {
       )}
 
       <Transactions002 />
+      <FAQ />
 
       <div>
         {status !== "connected" && (
