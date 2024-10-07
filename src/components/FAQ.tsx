@@ -47,7 +47,7 @@ const faqData: FAQItem[] = [
     answer: (
       <>
         Yes, if funds haven't been withdrawn by the donation recipient, you can
-        request a refund of your contributions.",
+        request a refund of your contributions.
         <br />
         <br />
         The recipient is only able to withdraw funds when the target has been
