@@ -44,7 +44,7 @@ export default function ClubPage() {
             chainId: base.id,
           });
         } catch (error) {
-          // console.error("Failed to switch chain", error);
+          console.error("Failed to switch chain", error);
         } finally {
           setIsLoading(false);
         }
@@ -82,7 +82,7 @@ export default function ClubPage() {
         pooledWithInterest: Number(pooledWithInterest),
       });
     } catch (error) {
-      // console.error("Error fetching goal info:", error);
+      console.error("Error fetching goal info:", error);
     } finally {
       setIsLoading(false);
     }
@@ -107,14 +107,11 @@ export default function ClubPage() {
           args: [address],
         });
         setUserDeposits(Number(deposits));
-
-        // console.log("Effective Balance:", balance);
-        // console.log("User Deposits:", deposits);
       } catch (error) {
-        // console.error(
-        //   "Error fetching effective balance or user deposits:",
-        //   error
-        // );
+        console.error(
+          "Error fetching effective balance or user deposits:",
+          error
+        );
       } finally {
         setIsLoading(false);
       }
@@ -239,83 +236,21 @@ export default function ClubPage() {
         </div>
       )}
 
-      {/* <div className="text-center mt-4">
-        <button
-          className="how-it-works-button"
-          onClick={() => setShowModal(true)}
-        >
-          How does Flexclub work? 🤔
-        </button>
-      </div> */}
-      <div>
-        <p className="mt-4">
-          {/* <a
-            href="https://basescan.org/address/0xcE51BE974FBE7e642072cAdb87F3F63b80cD7c8E"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500 underline"
-          >
-            Flexclub smart contract on Base
-          </a> */}
+      {/* Donation Deposit Component (Always Visible) */}
+      <div className="mt-6">
+        <h3 className="text-lg font-medium mb-2">Deposit</h3>
+        <p className="text-sm mb-4">
+          Make a deposit to join this club. Only deposit USDC on Base.
         </p>
+        <Deposit
+          contractAddress={contractAddress002}
+          contractABI={contractABI002}
+          onDepositSuccess={handleDepositSuccess}
+        />
       </div>
-
-      {/* {showModal && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <h3 className="text-xl font-bold mb-4 mt-4">
-              How does Flexclub work?
-            </h3>
-            <p className="mb-4">
-              Flexclub is an onchain goal-based saving club. Members deposit
-              USDC into a shared pool and earn interest through Aave.
-            </p>
-            <p className="mb-4">
-              The pooled funds are used to achieve the club's goal, and members
-              can withdraw their share of the pooled funds plus earned interest
-              at any time.
-            </p>
-            <p>
-              Each club is managed by its own smart contract. No funds are held
-              by Flexclub and all accounts are fully self-custodial. You are in
-              full control of your money and can withdraw at any point.
-            </p>
-            <div className="text-center">
-              <button
-                className="close-button mt-6"
-                onClick={() => setShowModal(false)}
-              >
-                Okay, got it 👌
-              </button>
-            </div>
-          </div>
-        </div>
-      )} */}
-
-      {successMessage && (
-        <div className="mt-4 p-2 bg-green-600 text-white rounded-md">
-          {successMessage}
-        </div>
-      )}
-
-      {errorMessage && (
-        <div className="mt-4 p-2 bg-red-600 text-white rounded-md">
-          {errorMessage}
-        </div>
-      )}
 
       {status === "connected" && (
         <>
-          <div className="mt-6">
-            <h3 className="text-lg font-medium mb-2">Deposit</h3>
-            <p className="text-sm mb-4">Only deposit USDC on Base</p>
-            <Deposit
-              contractAddress={contractAddress002}
-              contractABI={contractABI002}
-              onDepositSuccess={handleDepositSuccess}
-            />
-          </div>
-
           <div className="mt-6">
             <h3 className="text-lg font-medium mb-2">Withdraw</h3>
             <p className="text-sm mb-4">Only withdraw USDC on Base</p>
@@ -327,6 +262,18 @@ export default function ClubPage() {
             />
           </div>
         </>
+      )}
+
+      {successMessage && (
+        <div className="mt-4 p-2 bg-green-600 text-white rounded-md">
+          {successMessage}
+        </div>
+      )}
+
+      {errorMessage && (
+        <div className="mt-4 p-2 bg-red-600 text-white rounded-md">
+          {errorMessage}
+        </div>
       )}
 
       <Transactions002 />

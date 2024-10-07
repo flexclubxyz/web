@@ -6,6 +6,7 @@ import { writeContract, readContract } from "@wagmi/core";
 import { config } from "@/wagmi";
 import { usdcABI, usdcAddress } from "@/config";
 import { Modal } from "../components/Modal";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
 
 export function Deposit({
   contractABI,
@@ -17,24 +18,22 @@ export function Deposit({
   onDepositSuccess: () => void;
 }) {
   const [amount, setAmount] = useState("");
-  const { address } = useAccount();
+  const { address, isConnected } = useAccount();
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const { openConnectModal } = useConnectModal();
 
   const { mutate } = useMutation({
     mutationFn: async () => {
-      if (!address) {
-        // console.log("No address found");
+      if (!isConnected || !address) {
+        // User is not connected; do not proceed
         return;
       }
 
       setShowModal(false);
 
-      // console.log("Address:", address);
       const amountInUnits = parseUnits(amount, 6); // Convert amount to USDC (6 decimals)
-      // console.log("Amount in units:", amountInUnits.toString());
 
-      // Check USDC allowance
       try {
         setLoading(true);
         const allowance = await readContract(config, {
@@ -43,14 +42,10 @@ export function Deposit({
           functionName: "allowance",
           args: [address, contractAddress],
         });
-        // console.log("Allowance:", allowance);
 
-        // Type assertion for allowance
         const allowanceBN = BigInt(allowance as string);
-        // console.log("Allowance as BigInt:", allowanceBN.toString());
 
         if (allowanceBN < amountInUnits) {
-          // console.log("Allowance is less than amount, approving USDC");
           // Approve USDC
           await writeContract(config, {
             abi: usdcABI,
@@ -59,13 +54,9 @@ export function Deposit({
             args: [contractAddress, amountInUnits],
             account: address,
           });
-          // console.log("USDC approved");
-        } else {
-          // console.log("Sufficient allowance, no need to approve");
         }
 
         // Proceed with the deposit
-        // console.log("Proceeding with deposit");
         await writeContract(config, {
           abi: contractABI,
           address: contractAddress,
@@ -73,15 +64,26 @@ export function Deposit({
           args: [amountInUnits],
           account: address,
         });
-        // console.log("Deposit successful");
+
         onDepositSuccess();
       } catch (error) {
-        // console.error("Error during contract interaction:", error);
+        console.error("Error during contract interaction:", error);
+        // Optionally, you can set an error message state here
       } finally {
         setLoading(false);
       }
     },
   });
+
+  const handleDepositClick = () => {
+    if (!isConnected) {
+      // Open the Rainbow Connect modal
+      openConnectModal?.();
+    } else {
+      // Show the deposit modal
+      setShowModal(true);
+    }
+  };
 
   return (
     <div className="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-2">
@@ -93,14 +95,14 @@ export function Deposit({
         className="p-2 rounded-md border border-gray-300 text-black dark:text-white bg-white dark:bg-gray-800 w-full md:w-1/2"
       />
       <button
-        onClick={() => setShowModal(true)} // Show modal when button is clicked
+        onClick={handleDepositClick} // Updated to handleDepositClick
         className="p-2 bg-blue-600 rounded-md text-white hover:bg-blue-700 w-full md:w-1/2"
         disabled={loading}
       >
         {loading ? (
           <div className="loader border-t-transparent border-4 border-white rounded-full w-4 h-4 mx-auto"></div>
         ) : (
-          "Deposit USDC"
+          "Deposit"
         )}
       </button>
 
