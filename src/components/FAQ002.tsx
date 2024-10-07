@@ -1,26 +1,60 @@
+// components/FAQ002.tsx
+
 import React, { useState } from "react";
 
 interface FAQItem {
   question: string;
-  answer: string;
+  answer: React.ReactNode;
 }
 
 const faqData: FAQItem[] = [
   {
     question: "What is Flexclub?",
-    answer:
-      "Flexclub is an onchain goal-based saving club. Members deposit USDC into a shared pool and earn interest through Aave. The pooled funds are used to achieve the club's goal, and members can withdraw their share of the pooled funds plus earned interest at any time. Each club is managed by its own smart contract. No funds are held by Flexclub and all accounts are fully self-custodial. You are in full control of your money and can withdraw at any point.",
+    answer: (
+      <>
+        Flexclub is an onchain goal-based saving club. Members deposit USDC into
+        a shared pool and earn interest through Aave.
+        <br />
+        <br />
+        The pooled funds are used to achieve the club's goal, and members can
+        withdraw their share of the pooled funds plus earned interest at any
+        time.
+        <br />
+        <br />
+        Each club is managed by its own smart contract. No funds are held by
+        Flexclub and all accounts are fully self-custodial.
+        <br />
+        You are in full control of your money and can withdraw at any point.
+      </>
+    ),
   },
   {
     question: "How can I deposit?",
     answer:
-      "Click Login or Signup button to join Flexclub. Ensure you're on the Base network, enter an amount and click Deposit USDC button to start saving towards the goal of the club.",
+      "Click the Login or Signup button to join Flexclub. Ensure you're on the Base network, enter an amount, and click the Deposit to start saving towards the club's goal.",
   },
   {
     question: "Can I withdraw my funds?",
-    answer:
-      "Yes, you can withdraw your funds at any time using the Flexclub app or directly from the blockchain using a block explorer like Etherscan. No funds are held by Flexclub and all accounts are fully self-custodial. You are in full control of your money and can withdraw at any point.",
+    answer: (
+      <>
+        Yes, you can withdraw your funds at any time using the Flexclub app, or
+        directly from the blockchain using a block explorer like{" "}
+        <a
+          href="https://basescan.org/address/0xcE51BE974FBE7e642072cAdb87F3F63b80cD7c8E"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-400 hover:underline"
+        >
+          Basescan.
+        </a>
+        <br />
+        <br />
+        No funds are held by Flexclub and all accounts are fully self-custodial.
+        You are in full control of your money and can withdraw at any point.
+      </>
+    ),
   },
+  // Add more FAQs as needed
 ];
 
 const FAQ: React.FC = () => {
@@ -39,12 +73,15 @@ const FAQ: React.FC = () => {
             <button
               onClick={() => toggleFAQ(index)}
               className="w-full text-left flex justify-between items-center focus:outline-none"
+              aria-expanded={activeIndex === index}
             >
               <span className="text-md font-medium">{item.question}</span>
-              <span>{activeIndex === index ? "-" : "+"}</span>
+              <span className="ml-2">{activeIndex === index ? "-" : "+"}</span>
             </button>
             {activeIndex === index && (
-              <p className="mt-2 text-sm text-gray-300">{item.answer}</p>
+              <div className="mt-2 text-sm text-gray-300 transition-all duration-300 ease-in-out">
+                {item.answer}
+              </div>
             )}
           </div>
         ))}
