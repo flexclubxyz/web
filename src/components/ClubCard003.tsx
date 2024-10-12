@@ -19,7 +19,7 @@ const formatETH = (value: number) => {
   return (value / 1e18).toFixed(4); // Convert from wei to ETH with 4 decimal places
 };
 
-export default function ClubCard003() {
+const ClubCard003: React.FC = () => {
   const [goalInfo, setGoalInfo] = useState<GoalInfo>({
     name: "",
     description: "",
@@ -65,6 +65,11 @@ export default function ClubCard003() {
     fetchGoalInfo();
   }, []);
 
+  // Calculate progress percentage
+  const progressPercentage = goalInfo.target
+    ? Math.min((goalInfo.pooled / goalInfo.target) * 100, 100)
+    : 0;
+
   return (
     <div className="card bg-gray-800 text-white rounded-lg shadow-md p-6">
       {isLoading ? (
@@ -83,6 +88,7 @@ export default function ClubCard003() {
             <span className="font-semibold">Total Raised:</span>{" "}
             {formatETH(goalInfo.pooled)} ETH 💰
           </p>
+          {/* Integrate ProgressBar here */}
           <p className="mb-1">
             <span className="font-semibold">Contributors:</span>{" "}
             {goalInfo.contributors} 🤝
@@ -102,4 +108,6 @@ export default function ClubCard003() {
       )}
     </div>
   );
-}
+};
+
+export default ClubCard003;
