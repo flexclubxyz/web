@@ -56,7 +56,27 @@ const faqData: FAQItem[] = [
       </>
     ),
   },
-  // Add more FAQs as needed
+  {
+    question: "How can I create my own Flexclub?",
+    answer: (
+      <>
+        We're still in beta and all Flexclubs are created on a case by case
+        basis.
+        <br />
+        <br />
+        Please complete the campaign request form and we'll work on getting your
+        Flexclub live:{" "}
+        <a
+          href="https://app.deform.cc/form/663f868a-7fb6-47c5-832c-9452450a5da8/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-400 hover:underline"
+        >
+          Campaign request form
+        </a>
+      </>
+    ),
+  },
 ];
 
 const FAQ: React.FC = () => {
