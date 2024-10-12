@@ -1,5 +1,8 @@
+// src/app/0xFlex003/page.tsx
+
 "use client";
 
+import Link from "next/link"; // Ensure this import is present
 import { useAccount, useDisconnect } from "wagmi";
 import { useEffect, useState } from "react";
 import { switchChain, readContract } from "@wagmi/core";
@@ -227,7 +230,7 @@ export default function ClubPage() {
         <div className="bg-gray-900 p-4 rounded-md flex items-center justify-between">
           <div>
             <p className="mb-1">
-              <span className="font-semibold">Base Name:</span>{" "}
+              <span className="font-semibold">Basename:</span>{" "}
               <a
                 href="https://www.base.org/name/ashmoney"
                 target="_blank"
@@ -240,6 +243,27 @@ export default function ClubPage() {
           </div>
         </div>
       </div>
+
+      {/* *** Call to Action: Register Your Own Base Name *** */}
+      <div className="mt-6">
+        <div className="bg-blue-600 p-6 rounded-lg shadow-md text-center">
+          <h3 className="text-xl font-semibold mb-2">Get your Basename</h3>
+          <p className="mb-4">
+            Stand out in the community by getting your own Basename. It's quick
+            and easy.
+          </p>
+          <Link href="https://www.base.org/name" legacyBehavior>
+            <a
+              className="inline-block bg-white text-blue-600 font-semibold py-2 px-4 rounded hover:bg-gray-100 transition"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Get a Basename
+            </a>
+          </Link>
+        </div>
+      </div>
+      {/* *** End of Call to Action *** */}
 
       {/* User Contribution */}
       {status === "connected" && (
