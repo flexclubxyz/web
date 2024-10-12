@@ -18,9 +18,9 @@ export default function HomePage() {
       </p>
       <div>
         <div className="space-y-4">
-          <ClubCard003 /> {/* Add ClubCard003 at the top */}
+          <ClubCard003 />
           <ClubCard002 />
-          <ClubCard001 />
+          {/* <ClubCard001 /> */}
         </div>
         {status !== "connected" && (
           <div className="text-center mt-8">
