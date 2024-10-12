@@ -1,8 +1,6 @@
-// src/app/0xFlex003/page.tsx
-
 "use client";
 
-import Link from "next/link"; // Ensure this import is present
+import Link from "next/link";
 import { useAccount, useDisconnect } from "wagmi";
 import { useEffect, useState } from "react";
 import { switchChain, readContract } from "@wagmi/core";
