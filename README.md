@@ -36,6 +36,7 @@ Traditional financial systems often operate with a lack of transparency and give
 - **Website**: [Flexclub Landing](https://flexclub.xyz/)
 - **Smart Contract 1**: [View on BaseScan](https://basescan.org/address/0x63be961f1a2985a4596a39db6dccfebee0feae88)
 - **Smart Contract 2**: [View on BaseScan](https://basescan.org/address/0xcE51BE974FBE7e642072cAdb87F3F63b80cD7c8E)
+- **Smart Contract 3**: [View on BaseScan](https://basescan.org/address/0x86b03BF27Bc858c77725Dd0EbeB36653C6e6d31f)
 - **Dune Analytics Dashboard**: [View Dashboard](https://dune.com/ashrafstakala/flexclub)
 
 ## Contributing
