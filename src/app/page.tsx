@@ -1,9 +1,10 @@
 "use client";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount } from "wagmi";
-import ClubCard001 from "@/components/ClubCard001";
+// import ClubCard001 from "@/components/ClubCard001";
 import ClubCard002 from "@/components/ClubCard002";
-import ClubCard003 from "@/components/ClubCard003"; // Import ClubCard003
+import ClubCard003 from "@/components/ClubCard003";
+import ClubCard004 from "@/components/ClubCard004";
 
 export default function HomePage() {
   const { status } = useAccount();
@@ -18,6 +19,7 @@ export default function HomePage() {
       </p>
       <div>
         <div className="space-y-4">
+          <ClubCard004 />
           <ClubCard003 />
           <ClubCard002 />
           {/* <ClubCard001 /> */}
