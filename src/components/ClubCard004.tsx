@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { config } from "@/wagmi";
 import { readContract } from "@wagmi/core";
-import { contractABI003, contractAddress003 } from "@/config003";
+import { contractABI004, contractAddress004 } from "@/config004";
 
 interface GoalInfo {
   name: string;
@@ -38,8 +38,8 @@ const ClubCard003: React.FC = () => {
       setIsLoading(true);
       await delay(1000); // Add a delay of 1 second (optional)
       const data = await readContract(config, {
-        abi: contractABI003,
-        address: contractAddress003,
+        abi: contractABI004,
+        address: contractAddress004,
         functionName: "getGoalInfo",
       });
 
@@ -98,9 +98,9 @@ const ClubCard003: React.FC = () => {
             {new Date(goalInfo.deadline * 1000).toLocaleDateString()} 📅
           </p> */}
           <div className="flex justify-center">
-            <Link href={`/0xFlex003`} legacyBehavior>
+            <Link href={`/0xFlex004`} legacyBehavior>
               <a className="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition">
-                Club has closed 🙅
+                Join this club ✅
               </a>
             </Link>
           </div>
