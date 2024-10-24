@@ -20,8 +20,8 @@ export default function HomePage() {
       <div>
         <div className="space-y-4">
           <ClubCard004 />
-          <ClubCard003 />
           <ClubCard002 />
+          <ClubCard003 />
           {/* <ClubCard001 /> */}
         </div>
         {status !== "connected" && (
