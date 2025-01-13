@@ -147,7 +147,7 @@ const ClubCard002: React.FC = () => {
           <div className="flex justify-center">
             <Link href={`/0xFlex002`} legacyBehavior>
               <a className="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition">
-                Join this club ✅
+                Club has closed 🙅
               </a>
             </Link>
           </div>
